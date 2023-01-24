@@ -1,0 +1,374 @@
+﻿@model AllModels
+@{
+    int i = 0;
+}
+
+<!-- изменения добавлены налписи-->
+<div id="temp">
+
+    <nav id="main-nav">
+        <a href="#news">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+                <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
+                <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
+            </svg>
+            Новости
+        </a>
+        <a href="#programms">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+            </svg>
+            Программы
+        </a>
+        <a href="#mosaic">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+                <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z" />
+            </svg>
+            Фото
+        </a>
+    </nav>
+
+    <!-- изменения форма саппорт -->
+    <div class="contact_form">
+        <div class="mob_top_panel">
+            <button class="top_btn_support">
+                <svg role="presentation" class="icon_closes" style="visibility: none;" width="25px" height="25px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                        <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <div class="box">
+            <h2 class="heading">Свяжитесь с нами!</h2>
+            <form class="mb-5" method="post" id="contactForm" name="contactForm" novalidate="novalidate">
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="email" class="col-form-label">Ваш email</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="example@muctr.ru">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="name" class="col-form-label">Ваше имя</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Иван Иванов">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-12 form-group">
+                        <label for="message" class="col-form-label">Ваше сообщение</label>
+                        <textarea class="form-control" name="message" id="message" cols="30" rows="7"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" value="ОТПРАВИТЬ" class="btn_send_message btn btn-block btn-primary rounded-0 py-2 px-4">
+                        <span class="submitting"></span>
+                    </div>
+                </div>
+            </form>
+
+            <div id="form-message-warning mt-4"></div>
+            <div id="form-message-success">
+                Успешно!
+            </div>
+        </div>
+    </div>
+
+    <!-- изменения кнопка саппорт -->
+    <button class="btn_support" data-toggle-text="Close">
+        <svg role="presentation" class="icon_show" style="fill:#ffffff;" width="28px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.6 17.5">
+            <path d="M3.7 17.5v-4.8H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0h14.6c1.1 0 2 .9 2 2v8.8c0 1.1-.9 2-2 2H9l-5.3 4.7zM2 1c-.6 0-1 .4-1 1v8.8c0 .5.4 1 1 1h2.8v3.5l3.8-3.5h8c.5 0 1-.4 1-1V2c0-.5-.4-1-1-1H2z"></path>
+        </svg>
+        <svg role="presentation" class="icon_close unvis" style="visibility: none;" width="16px" height="16px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+            </g>
+        </svg>
+    </button>
+</div>
+
+<!-- Registration form -->
+<div class="reg-form">
+    <div class="reg-container">
+        <a id="close-btn" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+            </svg>
+        </a>
+        <div class="title">Я - выпускник РХТУ (МХТИ) им. Д.И. Менделеева</div>
+        <form method="post" asp-action="Registration" enctype="multipart/form-data">
+
+            <div class="user-details">
+                <div class="input-box">
+                    <span asp-validation-for="Human.FCs" class="details">Фамилия Имя Отчество</span>
+                    <input asp-for="Human.FCs" name="Fcs" placeholder="Иванов Иван Иванович" required>
+                </div>
+            </div>
+            <div class="user-details">
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.FCsгUniversity" class="details">ФИО в период обучения</span>
+                    <input asp-for="Human.FCsгUniversity" name="FCsгUniversity" type="text" placeholder="Иванов Иван Иванович" required>
+                </div>
+            </div>
+
+            <div class="gender-details">
+                <input asp-for="Human.Gender" type="radio" name="gender" id="dot-1" value="Мужской">
+                <input asp-for="Human.Gender" type="radio" name="gender" id="dot-2" value="Мужской">
+                <span class="gender-title">Пол</span>
+                <div class="category">
+                    <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Мужской</span>
+                    </label>
+                    <br />
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">Женский</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="user-details">
+                <div class="input-box">
+                    <span asp-validation-for="Human.Birthday" class="details">Дата рождения</span>
+                    <input asp-for="Human.Birthday" name="Birthday" type="date" id="birthday-date" required>
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.Faculty" class="details">Факультет/кафедра</span>
+                    <input asp-for="Human.Faculty" name="Faculty" type="text" placeholder="ЦИТХиН" required>
+                </div>
+                <div class="input-box">
+                    <span asp-validation-for="Human.ScientificSupervisor" class="details">Научный руководитель</span>
+                    <input asp-for="Human.ScientificSupervisor" name="ScientificSupervisor" type="text" placeholder="Дударов Сергей Павлович" required>
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.EndUniversityTime" class="details">Год окончания университета</span>
+                    <input asp-for="Human.EndUniversityTime" name="EndUniversityTime" type="date" id="ending-year" required>
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.CurrentLivingPlace" class="details">Место проживания в настоящее время</span>
+                    <input asp-for="Human.CurrentLivingPlace" name="CurrentLivingPlace" type="text" placeholder="Город, страна" required>
+                </div>
+                <div class="input-box">
+                    <span asp-validation-for="Human.CurrentWorkingPlace" class="details">Место работы в настоящее время</span>
+                    <input asp-for="Human.CurrentWorkingPlace" name="CurrentWorkingPlace" type="text" placeholder="РХТУ" required>
+                </div>
+                <div class="input-box">
+                    <span asp-validation-for="Human.CurrentPosition" class="details">Занимаемая должность</span>
+                    <input asp-for="Human.CurrentPosition" name="CurrentPosition" type="text" placeholder="Директор" required>
+                </div>
+                <div class="input-box">
+                    <span asp-validation-for="Human.SignificantAchievements" class="details">Значимые научные/профессиональные достижения</span>
+                    <textarea asp-for="Human.SignificantAchievements" name="SignificantAchievements" type="text" rows="6" placeholder="Развернутый ответ" required></textarea>
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.GraduatesOfMUCTRMHTI" class="details">Есть ли в Вашей семье выпускники РХТУ - МХТИ?</span>
+                    <select asp-for="Human.GraduatesOfMUCTRMHTI" name="GraduatesOfMUCTRMHTI" class="family-select">
+                        <option value="Нет">Нет</option>
+                        <option value="Родители">Родители</option>
+                        <option value="Дети">Дети</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.Hobby" class="details">Хобби, увлечения</span>
+                    <input asp-for="Human.Hobby" name="Hobby" type="text" placeholder="Баскетбол" required>
+                </div>
+
+                <div class="file-button">
+                    <span asp-validation-for="Human.Photo" class="details">Загрузите Ваше выпускное фото или актуальное фото (при желании)</span>
+                    <br>
+                    <label for="upload-file">Загрузить файл</label>
+                    <input asp-for="Human.Photo" name="Photo" type="file" id="upload-file">
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.Email" class="details">Адресс электронной почты</span>
+                    <input asp-for="Human.Email" name="Email" type="email" placeholder="example@muctr.ru" required>
+                </div>
+                <div class="input-box">
+                    <span asp-validation-for="Human.Phone" class="details">Контактный телефон</span>
+                    <input asp-for="Human.Phone" name="Phone" type="tel" placeholder="+7 (999) 999-99-99" required>
+                </div>
+
+            </div>
+
+            <div class="reg-checkboxes">
+                <div class="check-box">
+                    <input asp-for="Human.Subscription" name="Subscription" type="checkbox" id="mailing">
+                    <label for="mailing">Подписаться на рассылку новостной информации</label>
+                </div>
+
+                <div class="check-box">
+                    <input asp-for="Human.LiveOfAssociation" name="LiveOfAssociation" type="checkbox" id="activist" value="true">
+                    <label for="activist">Хочу активно участвовать в жизни ассоциации</label>
+                </div>
+
+                <div class="check-box">
+                    <input asp-for="Human.FunSaturday" name="FunSaturday" type="checkbox" id="saturday" value="true">
+                    <label for="saturday">Хочу выступить на "Нескучной субботе"</label>
+                </div>
+
+                <div class="check-box">
+                    <input asp-for="Human.DataProcessing" name="DataProcessing" type="checkbox" id="personal-data" value="true">
+                    <label for="personal-data">Согласие на обработку персональных данных</label>
+                </div>
+            </div>
+
+
+            <div class="submit-button">
+                <input type="submit" value="Отправить">
+            </div>
+        </form>
+    </div>
+</div>
+<!-- End of registration form -->
+<header>
+    <div class="brand-box">
+        <img class="brand" src="https://static.tildacdn.com/tild3434-6365-4631-a363-303563306566/logo.png" imgfield="img" style="max-width: 350px;width: 350px; height: auto; display: block;" alt="Сообщество выпускников Mendeleev family">
+    </div>
+
+    <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+            @if(User.Identity.IsAuthenticated){
+                @Html.Raw("<a href='/admin'><li>Панель админа</li></a>")
+            }
+            <a href="#">
+            <li>Связь поколений</li></a>
+            <a href="#">
+            <li>Нескучная суббота</li></a>
+        </ul>
+    </div>
+
+    <div class="text-box">
+        <h1 class="heading-primary">
+            <span class="heading-primary-main">
+                МХТИ-РХТУ<br>
+                СВЯЗЬ ПОКОЛЕНИЙ!
+            </span>
+        </h1>
+        <a id="reg-btn" class="btn btn-white btn-animated">Вступить</a>
+    </div>
+</header>
+<main>
+    <div id="news" class="main-block news">
+        <h1>Новости</h1>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 news-category">
+            <li id="all" class="active-category" onclick="changeActive(this)">
+                <a>Все</a>
+            </li>
+            <li id="events" onclick="changeActive(this)">
+                <a>Мероприятия</a>
+            </li>
+            <li id="jobs" onclick="changeActive(this)">
+                <a>Вакансии</a>
+            </li>
+            <li id="announcements" onclick="changeActive(this)">
+                <a>Анонсы</a>
+            </li>
+        </ul>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            @foreach (News obj in Model.AllNews)
+            {
+                @if (i != 3)
+                {
+                    @Html.Raw($"<li class='news-block {obj.CategoryId}'>")
+                    i++;
+                }else{
+                    @Html.Raw($"<li class='news-block {obj.CategoryId} hidden'>")
+                }
+                    <img src="@obj.Photo" alt="">
+                    <h2>@obj.Title</h2>
+                    <p class="info">@obj.BriefDescription</p>
+                    <p class="date">@obj.Created.ToString("dd/MM/yyyy")</p>
+                @Html.Raw("</li>")
+            }
+        </ul>
+        <button id="more" type="button" class="btn btn-primary">Показать ещё</button>
+    </div>
+
+    <div id="programms" class="main-block programms">
+        <h1>Программы</h1>
+        <ul class="nav justify-content-center">
+            <li>
+                <ol class="blocks">
+                    @foreach (Programms obj in Model.AllProgramms)
+                    {
+                        <li class="in-block">
+                            <h2>@obj.Title</h2>
+                            <p class="info">
+                                @Html.Raw(obj.BriefDescription)
+                            </p>
+                        </li>
+                    }
+                </ol>
+            </li>
+            <li class="blocks-photo">
+                <img src="https://www.muctr.ru/upload/applicants/image/logo.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="mosaic" class="main-block mosaic">
+        <h1>Выпускники</h1>
+        <div class="all_pict">
+            <p>
+                @{
+                        
+                    DirectoryInfo Folder;
+                    FileInfo[] Images;
+
+                    Folder = new DirectoryInfo("wwwroot/media/colladje");
+                    Images = Folder.GetFiles();
+                    List<String> imagesList = new List<String>();
+
+                    for (int k = 0; k < Images.Length; k++)
+                    {
+                        imagesList.Add(String.Format(@"{0}/{1}", "/media/colladje", Images[k].Name));
+                        @Html.Raw("<img src='" + imagesList[k] + "' class='scale' />")
+                        Console.WriteLine(String.Format(@"{0}/{1}", "/media/colladje", Images[k].Name));
+                    }
+                }
+            </p>
+        </div>
+    </div>
+</main>
+
+<footer id="info">
+    <h1>Свяжитесь с нами:</h1>
+    <p>ул. Героев Панфиловцев, 20, Москва, 125480</p>
+    <p>
+        +7 (495) 495-00-29<br>
+        <a href="mailto:alumni@muctr.ru" rel="noopener noreferrer" style="color: rgb(31, 73, 125);">alumni@muctr.ru</a>
+    </p>
+    <a href="https://t.me/rector_muctr" target="_blank" rel="nofollow noopener" style="width: 48px; height: 48px;">
+        <svg class="t-sociallinks__svg" width="48px" height="48px" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z" fill="#157fc4"></path>
+        </svg>
+    </a>
+    <a href="https://vk.com/dmuctr" target="_blank" rel="nofollow noopener" style="width: 48px; height: 48px;">
+        <svg class="t-sociallinks__svg" width="48px" height="48px" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50ZM25 34c.406 19.488 10.15 31.2 27.233 31.2h.968V54.05c6.278.625 11.024 5.216 12.93 11.15H75c-2.436-8.87-8.838-13.773-12.836-15.647C66.162 47.242 71.783 41.62 73.126 34h-8.058c-1.749 6.184-6.932 11.805-11.867 12.336V34h-8.057v21.611C40.147 54.362 33.838 48.304 33.556 34H25Z" fill="#157fc4"></path>
+        </svg>
+    </a>
+</footer>

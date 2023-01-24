@@ -1,0 +1,55 @@
+﻿@model Programms
+
+<div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+        <li>
+            <a asp-controller="Home" asp-action="Index" type="submit">Главная</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Index" type="submit">Все таблицы</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Logout" type="submit">Выйти</a>
+        </li>
+    </ul>
+</div>
+
+<form class="edit-form" method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="row pb-2">
+        <h2 class="text-primary">Создание программы</h2>
+        <hr />
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="Title" class="details">Заголовок</span>
+            <input asp-for="Title" name="Title" placeholder="Заголовок" required>
+        </div>
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="BriefDescription" class="details">Краткое содержание</span>
+            <textarea asp-for="BriefDescription" class="brief-textarea" name="BriefDescription" type="text" required></textarea>
+        </div>
+
+        <div class="input-box">
+            <span asp-validation-for="Description" class="details">Содержание</span>
+            <textarea asp-for="Description" class="description-textarea" name="Description" type="text" required></textarea>
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:200px">Создать</button>
+    <a asp-controller="Registration" asp-action="Index" class="btn btn-secondary" style="width:200px">Вернуться</a>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+    }

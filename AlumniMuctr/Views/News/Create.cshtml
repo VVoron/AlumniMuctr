@@ -1,0 +1,77 @@
+﻿@model NewsRequest
+
+<div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+        <li>
+            <a asp-controller="Home" asp-action="Index" type="submit">Главная</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Index" type="submit">Все таблицы</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Logout" type="submit">Выйти</a>
+        </li>
+    </ul>
+</div>
+
+<form class="edit-form" method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="row pb-2">
+        <h2 class="text-primary">Создание новости</h2>
+        <hr />
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="Title" class="details">Заголовок</span>
+            <input asp-for="Title" name="Title" placeholder="Заголовок" required>
+        </div>
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="BriefDescription" class="details">Краткое содержание</span>
+            <textarea asp-for="BriefDescription" class="brief-textarea" name="BriefDescription" type="text" required></textarea>
+        </div>
+
+        <div class="input-box">
+            <span asp-validation-for="Description" class="details">Содержание</span>
+            <textarea asp-for="Description" class="description-textarea" name="Description" type="text" required></textarea>
+        </div>
+
+        <div class="input-box">
+            <span asp-validation-for="CategoryId" class="details">Категория</span>
+            <select asp-for="CategoryId" name="CategoryId" class="family-select">
+                <option value="1">Мероприятия</option>
+                <option value="2">Вакансии</option>
+                <option value="3">Анонсы</option>
+            </select>
+        </div>
+
+        <div class="file-button">
+            <span asp-validation-for="Photo" class="details">Фото</span>
+            <br>
+            <label for="upload-file">Загрузить файл</label>
+            <input asp-for="Photo" name="Photo" type="file" id="upload-file">
+        </div>
+
+        <div class="user-details">
+            <div class="input-box">
+                <span asp-validation-for="PhotoUrl" class="details">Или ссылка на фото</span>
+                <input asp-for="PhotoUrl" name="PhotoUrl" placeholder="example.com/photo1.png" required>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:200px">Создать</button>
+    <a asp-controller="Registration" asp-action="Index" class="btn btn-secondary" style="width:200px">Вернуться</a>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+    }

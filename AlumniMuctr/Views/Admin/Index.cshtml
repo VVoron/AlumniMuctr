@@ -1,0 +1,81 @@
+﻿
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+            <li>
+                <a asp-controller="Home" asp-action="Index" type="submit">Главная</a>
+            </li>
+            <li>
+            <a asp-controller="Admin" asp-action="Logout" type="submit">Выйти</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-db-block active">
+        <ul class="all-db-ref">
+            @if (User.Identity.Name == "admin")
+            {
+                <li>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+                        </svg>
+                        Пользователи (Идут работы)
+                    </a>
+                </li>
+            }
+            <li>
+                <a asp-controller="Registration" asp-action="Index">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+                    </svg>
+                    Анкеты выпускников
+                </a>
+            </li>
+            <li>
+                <a asp-controller="News" asp-action="Index">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+                    </svg>
+                    Новости
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Programms" asp-action="Index">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+                    </svg>
+                    Программы
+                </a>
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+    <div class="text-center auth-form">
+        <main class="form-signin m-auto">
+            <form autocomplete="on" method="post" asp-controller="Admin" asp-action="Index">
+                <img class="mb-4" src="~/media/logo.png" alt="" height="300px">
+                <h1 class="h3 mb-3 fw-normal">Введите данные для входа</h1>
+                <div asp-validation-summary="All">
+                    <div class="form-floating">
+                        <input name="Name" type="text" class="form-control" id="floatingInput" placeholder="Имя пользователя">
+                        <label for="floatingInput">Имя пользователя</label>
+                    </div>
+                    <div class="form-floating">
+                        <input name="Password" type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+                        <label for="floatingPassword">Пароль</label>
+                    </div>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+            </form>
+        </main>
+    </div>
+}
