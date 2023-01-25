@@ -27,5 +27,19 @@ namespace AlumniMuctr.Models
             Description = request.Description;
             CategoryId = request.CategoryId;
         }
+
+        public string[] GetInfoForTable()
+        {
+            return new string[]
+            {
+                Id.ToString(),
+                Title,
+                (Photo == null)?"":Photo,
+                BriefDescription,
+                (BriefDescription == null)?"":BriefDescription,
+                Created.ToString(),
+                CategoryId.ToString()
+            };
+        }
     }
 }
