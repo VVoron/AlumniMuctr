@@ -7,6 +7,6 @@ namespace AlumniMuctr.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public IList<News> News { get; set; }
+        //public IList<News> News { get; set; }
     }
 }

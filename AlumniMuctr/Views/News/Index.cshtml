@@ -52,17 +52,18 @@
                     <th>Заголовок</th>
                     <th>Краткое содержание</th>
                     <th>Фото</th>
+                    <th>Действия</th>
                 </tr>
             </thead>
         <tbody>
                 @foreach (var obj in Model)
                 {
                 <tr>
-                    @*<td>
-                        @obj.Category.Name
-                    </td>*@
                     <td>
                         @obj.Created.ToString("dd/MM/yy H:mm")
+                    </td>
+                    <td>
+                        @obj.Category.Name
                     </td>
                     <td>
                             @obj.Title

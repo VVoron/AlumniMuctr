@@ -11,10 +11,7 @@ namespace AlumniMuctr.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<News>()
-                .HasOne(c => c.Category)
-                .WithMany(n => n.News)
-                .HasForeignKey(x=>x.CategoryId);
+
         }
 
 

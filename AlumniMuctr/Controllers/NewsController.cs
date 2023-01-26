@@ -2,6 +2,7 @@
 using AlumniMuctr.Models;
 using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AlumniMuctr.Controllers
 {
@@ -21,9 +22,9 @@ namespace AlumniMuctr.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<News> dbList = _db.News;
+            IEnumerable<News> dbList = _db.News.Include(c=>c.Category).ToList();
             return View(dbList);
-        }
+        } 
 
         public ActionResult ExportData()
         {
