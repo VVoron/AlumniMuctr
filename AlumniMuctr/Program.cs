@@ -1,7 +1,11 @@
 using AlumniMuctr.Data;
 using AlumniMuctr.Services.EmailService;
+using DocumentFormat.OpenXml.InkML;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,3 +46,26 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+//
+//Generatinng JWT Token Example
+//
+/*var claims = context.User.Claims;
+var jwt = new JwtSecurityToken(
+        issuer: AuthOptions.ISSUER,
+        audience: AuthOptions.AUDIENCE,
+        claims: claims,
+        expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(2)),
+        signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));*/
+//
+//Generatinng JWT Token Example
+//
+
+public class AuthOptions
+{
+    public const string ISSUER = "MyAuthServer"; // издатель токена
+    public const string AUDIENCE = "MyAuthClient"; // потребитель токена
+    const string KEY = "mysupersecret_secretkey!123";   // ключ для шифрации
+    public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
+        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+}
