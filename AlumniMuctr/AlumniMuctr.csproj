@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\data\**" />
+    <Content Remove="wwwroot\data\**" />
+    <EmbeddedResource Remove="wwwroot\data\**" />
+    <None Remove="wwwroot\data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.100.3" />
     <PackageReference Include="EPPlus" Version="4.5.3.3" />
     <PackageReference Include="EPPlus.Interfaces" Version="6.0.0" />
@@ -23,7 +30,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\media\UserPictures\" />
-    <Folder Include="wwwroot\data\" />
   </ItemGroup>
 
   <ItemGroup>

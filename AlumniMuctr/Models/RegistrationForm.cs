@@ -63,5 +63,54 @@ namespace AlumniMuctr.Models
             DataProcessing = request.DataProcessing;
             //Photo = request.Photo != null ? "wwwroot\\media\\UserPictures\\" + request.Photo.FileName : null;
         }
+
+        /*"Id",
+                "ФИО",
+                "ФИО в период обучения ",
+                "Пол",
+                "Дата рождения",
+                "Факультет/кафедра",
+                "Научный руководитель",
+                "Год окончания университета",
+                "Место проживания в настоящее время",
+                "Место работы в настоящее время",
+                "Занимаемая должность",
+                "Значимые научные/профессиональные достижения",
+                "Есть ли в Вашей семье выпускники РХТУ - МХТИ?",
+                "Хобби, увлечения",
+                "Загрузите Ваше выпускное фото или актуальное фото (при желании)",
+                "Адресс электронной почты",
+                "Контактный телефон",
+                "Подписаться на рассылку новостной информации",
+                "Хочу активно участвовать в жизни ассоциации",
+                "Хочу выступить на 'Нескучной субботе'",
+                "Согласие на обработку персональных данных"*/
+        public string[] GetInfoForTable()
+        {
+            return new string[]
+            {
+                this.Id.ToString(),
+                this.FCs,
+                this.FCsгUniversity,
+                this.Gender,
+                this.Birthday.ToString(),
+                this.Faculty,
+                this.ScientificSupervisor,
+                this.EndUniversityTime.ToString(),
+                this.CurrentLivingPlace,
+                this.CurrentWorkingPlace,
+                this.CurrentPosition,
+                this.SignificantAchievements,
+                this.GraduatesOfMUCTRMHTI,
+                this.Hobby,
+                this.Photo,
+                this.Email,
+                this.Phone,
+                this.Subscription.ToString(),
+                this.LiveOfAssociation.ToString(),
+                this.FunSaturday.ToString(),
+                this.DataProcessing.ToString()
+            };
+        }
     }
 }
