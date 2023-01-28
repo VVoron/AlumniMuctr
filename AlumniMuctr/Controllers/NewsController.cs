@@ -26,13 +26,9 @@ namespace AlumniMuctr.Controllers
         {
             IEnumerable<News> dbList = _db.News.Include(c=>c.Category).ToList();
             return View(dbList);
-<<<<<<< Updated upstream
         } 
 
-=======
-        }
         [Authorize]
->>>>>>> Stashed changes
         public ActionResult ExportData()
         {
             IEnumerable<News> dbList = _db.News;
