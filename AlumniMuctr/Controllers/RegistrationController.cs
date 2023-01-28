@@ -1,6 +1,7 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlumniMuctr.Controllers
@@ -37,13 +38,13 @@ namespace AlumniMuctr.Controllers
         {
             _db = db;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             IEnumerable<RegistrationForm> dbList = _db.RegistrationForm;
             return View(dbList);
         }
-
+        [Authorize]
         public ActionResult ExportData()
         {
             IEnumerable<RegistrationForm> regForm = _db.RegistrationForm;
@@ -89,6 +90,7 @@ namespace AlumniMuctr.Controllers
         }
 
         //Get
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -110,6 +112,7 @@ namespace AlumniMuctr.Controllers
         }
 
         //Get
+        [Authorize]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -138,7 +141,7 @@ namespace AlumniMuctr.Controllers
             }
             return View(obj);
         }
-
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             var obj = _db.RegistrationForm.Find(id);

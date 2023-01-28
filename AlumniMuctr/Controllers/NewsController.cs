@@ -1,6 +1,7 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,12 +21,18 @@ namespace AlumniMuctr.Controllers
             _appEnvironment = appEnvironment;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             IEnumerable<News> dbList = _db.News.Include(c=>c.Category).ToList();
             return View(dbList);
+<<<<<<< Updated upstream
         } 
 
+=======
+        }
+        [Authorize]
+>>>>>>> Stashed changes
         public ActionResult ExportData()
         {
             IEnumerable<News> dbList = _db.News;
@@ -72,7 +79,7 @@ namespace AlumniMuctr.Controllers
                 }
             }
         }
-
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -114,7 +121,7 @@ namespace AlumniMuctr.Controllers
             TempData["success"] = "Новость успешно создана";
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -173,7 +180,7 @@ namespace AlumniMuctr.Controllers
             TempData["success"] = "Новость успешно изменена";
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             var obj = _db.News.Find(id);

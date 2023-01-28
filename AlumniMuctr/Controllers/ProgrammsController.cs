@@ -1,5 +1,6 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlumniMuctr.Controllers
@@ -14,13 +15,13 @@ namespace AlumniMuctr.Controllers
             _db = db;
             _appEnvironment = appEnvironment;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             IEnumerable<Programms> dbList = _db.Programms;
             return View(dbList);
         }
-
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -38,6 +39,7 @@ namespace AlumniMuctr.Controllers
             TempData["success"] = "Программа успешно создана";
             return RedirectToAction("Index");
         }
+        [Authorize]
 
         public IActionResult Edit(int? id)
         {
@@ -67,7 +69,7 @@ namespace AlumniMuctr.Controllers
             TempData["success"] = "Программа успешно изменена";
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             var obj = _db.Programms.Find(id);
