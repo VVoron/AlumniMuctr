@@ -1,0 +1,89 @@
+﻿@model IEnumerable<News>
+@{
+    int i = 0;
+}
+
+<!--Top Right Menu-->
+<div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Raw("<a href='/admin'><li>Панель админа</li></a>")
+        }
+        <a asp-controller="Home" asp-action="Index">
+            <li>Главная</li>
+        </a>
+        <a href="#">
+        <li>Связь поколений</li></a>
+        <a asp-controller="FunSaturday" asp-action="Index">
+        <li>Нескучная суббота</li></a>
+        <a asp-controller="AboutUs" asp-action="Index">
+        <li>О нас</li></a>
+    </ul>
+</div>
+
+<div class="about-us-page">
+    <h4>Прекрасная новость для всех любознательных, эрудитов и тех, кому просто интересно жить!</h4>
+    <p class="main-info">
+        В РХТУ им. Д.И. Менделеева начал свою работу Профессиональный клуб «Нескучная суббота», созданный под эгидой Ассоциации выпускников университета «Менделеевцы».
+        У Вас есть замечательная возможность узнать много нового из лекций известных ученых и экспертов в различных областях науки и знаний. Заседания клуба проходят каждую субботу в онлайн-формате. Чтобы послушать лекцию или посмотреть видео прошлых лекций достаточно зарегистрироваться на сайте Ассоциации выпускников «Менделеевцы».
+        Приглашаем всех желающих принять участие в заседаниях клуба, послушать интересные лекции и подискутировать!
+    </p>
+
+    @if (Model.Count() != 0)
+    {
+        <h1>АНОНСЫ</h1>
+        <div class="news owl-carousel">
+            @foreach (News obj in Model)
+            {
+                <div class='news-block item'>
+                    <img src="@obj.Photo" alt="">
+                    <h2>@obj.Title</h2>
+                    <p class="info">@obj.BriefDescription</p>
+                    <p class="date">@obj.Created.ToString("dd/MM/yyyy")</p>
+                </div>
+            }
+        </div>   
+    }
+
+
+    <a href="#" class="btn btn-primary">Регистрация</a>
+
+    <h1>Лекции</h1>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <iframe src="https://www.youtube.com/embed/4q9YVjwgjPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe src="https://www.youtube.com/embed/iqk0YkW-F8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe src="https://www.youtube.com/embed/pyU_Qm9i9gg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="carousel-item">
+                <iframe src="https://www.youtube.com/embed/MuRwDHKGx7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+        </button>
+    </div>
+    <!--Карусель на все видео с ютуба-->
+</div>

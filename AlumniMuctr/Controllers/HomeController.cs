@@ -51,6 +51,14 @@ namespace AlumniMuctr.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> HelperRequest(Helper obj)
+        {
+            _db.Helper.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();
