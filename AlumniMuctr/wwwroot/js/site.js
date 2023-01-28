@@ -73,6 +73,17 @@ window.addEventListener("scroll", reveal);
 window.addEventListener("scroll", navigationscroll);
 
 window.onload = function () {
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 50,
+            autoplay: true,
+            smartSpeed: 1000,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true
+            });
+    });
+
     var $button = document.querySelector('.btn_support'),
         $button_close = document.querySelector('.top_btn_support'),
         $container = document.querySelector('.contact_form');

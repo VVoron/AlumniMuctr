@@ -828,6 +828,12 @@ footer a {
     margin-top: 5%;
 }
 
+.table-area-users {
+    background-color: white;
+    margin-top: 5%;
+    width: 40%;
+}
+
 table {
     display: block;
     overflow-x: auto;
@@ -1105,4 +1111,59 @@ label.error {
 
 #news ul li {
     cursor: pointer;
+}
+
+.about-us-page{
+    background-color: #fff;
+    width: 80%;
+    margin: 3rem auto;
+    padding: 5rem 8rem;
+}
+
+.about-us-page h4{
+    font-size: 26px;
+    font-weight: 700;
+    box-sizing: content-box;
+    text-align: center;
+    line-height: 1.55;
+    font-family: 'Roboto',Arial,sans-serif;
+}
+
+.about-us-page .main-info{
+    font-size: 20px;
+    line-height: 1.55;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 300;
+    box-sizing: content-box;
+    display: block;
+    box-sizing: content-box;
+}
+
+.about-us-page h1{
+    font-size: 42px;
+    line-height: 1.23;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 600;
+}
+
+.about-us-page .carousel {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
+.about-us-page iframe{
+    width: 100%;
+    height: 550px;
+}
+
+.about-us-page .btn{
+    border-radius: 0;
+    height:50px;
+    width: 50%;
+    display:block;
+    margin: 2rem auto;
 }

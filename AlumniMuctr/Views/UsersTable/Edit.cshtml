@@ -1,0 +1,53 @@
+﻿@model EditUserViewModel
+
+<div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+        <li>
+            <a asp-controller="Home" asp-action="Index" type="submit">Главная</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Index" type="submit">Все таблицы</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Logout" type="submit">Выйти</a>
+        </li>
+    </ul>
+</div>
+
+<form class="edit-form" method="post" asp-action="Edit" enctype="multipart/form-data">
+    <div class="row pb-2">
+        <h2 class="text-primary">Редактирование пользователя</h2>
+        <hr />
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="Name" class="details">Логин</span>
+            <input asp-for="Name" name="Name" placeholder="Логин" readonly>
+        </div>
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="OldPassword" class="details">Старый пароль</span>
+            <input asp-for="OldPassword" name="OldPassword" type="text" readonly></input>
+        </div>
+        <div class="input-box">
+            <span asp-validation-for="NewPassword" class="details">Новый пароль</span>
+            <input asp-for="NewPassword" name="NewPassword" placeholder="Новый пароль" type="text" required></input>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:200px">Обновить</button>
+    <a asp-controller="UsersTable" asp-action="Index" class="btn btn-secondary" style="width:200px">Вернуться</a>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

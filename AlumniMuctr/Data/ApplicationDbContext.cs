@@ -19,5 +19,7 @@ namespace AlumniMuctr.Data
         public DbSet<Programms> Programms { get; set; }
         public DbSet<RegistrationForm> RegistrationForm { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<Helper> Helper { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

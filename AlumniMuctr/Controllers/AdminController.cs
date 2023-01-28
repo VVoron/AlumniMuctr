@@ -3,15 +3,18 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using AlumniMuctr.Data;
 
 namespace AlumniMuctr.Controllers
 {
     public class AdminController : Controller
     {
-        List<User> peoples = new List<User>
+        private readonly ApplicationDbContext _db;
+        public AdminController(ApplicationDbContext db)
         {
-            new User {Name = "admin", Password = "admin", Role = Enums.Role.Admin},
-        };
+            _db = db;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -30,6 +33,7 @@ namespace AlumniMuctr.Controllers
                     return RedirectToAction("Index");
                 }
             }
+            TempData["error"] = "Неверный логин/пароль";
             return View();
         }
 
@@ -37,7 +41,7 @@ namespace AlumniMuctr.Controllers
         {
             var claims = new List<Claim> {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, (user.Role == Enums.Role.Admin) ? "admin" : "moderator")
             };
             return new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
         }
@@ -46,7 +50,7 @@ namespace AlumniMuctr.Controllers
         {
             try
             {
-                var user = peoples.FirstOrDefault(x => x.Name == model.Name);
+                var user = _db.User.FirstOrDefault(x => x.Name == model.Name);
                 if (user == null)
                 {
                     return null;

@@ -1,6 +1,8 @@
 ﻿using AlumniMuctr.Enums;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Security.Claims;
 
 namespace AlumniMuctr.Models
 {
@@ -11,11 +13,29 @@ namespace AlumniMuctr.Models
         public string Password { get; set; }
         public Role Role { get; set; }
     }
+
     public class LoginViewModel
     {
         [Required(ErrorMessage = "Введите имя пользователя")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Введите пароль")]
         public string Password { get; set; }
+    }
+
+    public class NewUserViewModel
+    {
+        public string Name { get; set; }
+        [Required(ErrorMessage = "Введите пароль")]
+        public string Password { get; set; }
+        [Required(ErrorMessage = "Повторите пароль")]
+        public string RepeatPassword { get; set; }
+    }
+    public class EditUserViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string OldPassword { get; set; }
+        [Required(ErrorMessage = "Введите новый пароль")]
+        public string NewPassword { get; set; }
     }
 }

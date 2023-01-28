@@ -1,0 +1,55 @@
+﻿@model NewUserViewModel
+
+<partial name="_Notifications" />
+
+<div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+        <li>
+            <a asp-controller="Home" asp-action="Index" type="submit">Главная</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Index" type="submit">Все таблицы</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Logout" type="submit">Выйти</a>
+        </li>
+    </ul>
+</div>
+
+<form class="edit-form" id="form-validation" method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="row pb-2">
+        <h2 class="text-primary">Создание пользователя</h2>
+        <hr />
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="Name" class="details">Логин</span>
+            <input asp-for="Name" name="Name" placeholder="Логин" required>
+        </div>
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="Password" class="details">Пароль</span>
+            <input asp-for="Password" name="Password" placeholder="Пароль" type="text" required></input>
+        </div>
+        <div class="input-box">
+            <span asp-validation-for="RepeatPassword" class="details">Повторите пароль</span>
+            <input asp-for="RepeatPassword" name="RepeatPassword" placeholder="Повторите пароль" type="text" required></input>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:200px">Создать</button>
+    <a asp-controller="UsersTable" asp-action="Index" class="btn btn-secondary" style="width:200px">Вернуться</a>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+    }

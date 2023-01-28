@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AlumniMuctr.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <link rel="stylesheet" href="~/lib/owl/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="~/lib/owl/assets/owl.theme.default.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;subset=latin,cyrillic" rel="stylesheet">
     <title>Ассоциация выпускников | Менделеевцы</title>
 </head>
 <body id="temp">
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/owl/owl.carousel.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
