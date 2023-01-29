@@ -215,7 +215,7 @@
 <!-- End of registration form -->
 <header>
     <div class="brand-box">
-        <img class="brand" src="https://static.tildacdn.com/tild3434-6365-4631-a363-303563306566/logo.png" imgfield="img" style="max-width: 350px;width: 350px; height: auto; display: block;" alt="Сообщество выпускников Mendeleev family">
+        <img class="brand" src="~/media/logo.png" imgfield="img" style="max-width: 350px;width: 350px; height: auto; display: block;" alt="Сообщество выпускников Mendeleev family">
     </div>
 
     <!--Top Right Menu-->
@@ -289,8 +289,7 @@
 
     <div id="programms" class="main-block programms">
         <h1>Программы</h1>
-        <ul class="nav justify-content-center">
-            <li>
+        <div class="justify-content-center">
                 <ol class="blocks">
                     @foreach (Programms obj in Model.AllProgramms)
                     {
@@ -302,11 +301,7 @@
                         </li>
                     }
                 </ol>
-            </li>
-            <li class="blocks-photo">
-                <img src="https://www.muctr.ru/upload/applicants/image/logo.jpg" alt="">
-            </li>
-        </ul>
+        </div>
     </div>
 
 

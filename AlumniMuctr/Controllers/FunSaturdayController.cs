@@ -17,7 +17,19 @@ namespace AlumniMuctr.Controllers
             IEnumerable<News> news = (from News in _db.News
                                        where News.CategoryId == 3
                                       select News).ToList();
-            return View(news);
+            NewsAndHelper thisModel = new NewsAndHelper();
+            thisModel.News = news;
+            thisModel.Helper = new Helper();
+
+            return View(thisModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> HelperRequest(Helper obj)
+        {
+            _db.Helper.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

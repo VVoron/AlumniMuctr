@@ -622,13 +622,16 @@ nav a:hover {
     display: none !important;
 }
 
+.programms{
+    width: 50%;
+}
+
 .programms .blocks {
     max-width: 600px;
-    margin-top: 4rem;
+    margin: 4rem auto;
     counter-reset: li;
     list-style: none;
     padding: 10px;
-    margin-right: 1rem;
 }
 
 .blocks li.in-block {
@@ -1113,14 +1116,14 @@ label.error {
     cursor: pointer;
 }
 
-.about-us-page{
+.fun-sut-page{
     background-color: #fff;
     width: 80%;
     margin: 3rem auto;
     padding: 5rem 8rem;
 }
 
-.about-us-page h4{
+.fun-sut-page h4{
     font-size: 26px;
     font-weight: 700;
     box-sizing: content-box;
@@ -1129,7 +1132,7 @@ label.error {
     font-family: 'Roboto',Arial,sans-serif;
 }
 
-.about-us-page .main-info{
+.fun-sut-page .main-info{
     font-size: 20px;
     line-height: 1.55;
     font-family: 'Roboto',Arial,sans-serif;
@@ -1139,7 +1142,7 @@ label.error {
     box-sizing: content-box;
 }
 
-.about-us-page h1{
+.fun-sut-page h1{
     font-size: 42px;
     line-height: 1.23;
     margin-bottom: 20px;
@@ -1149,21 +1152,68 @@ label.error {
     font-weight: 600;
 }
 
-.about-us-page .carousel {
+.fun-sut-page .carousel {
     margin: auto;
     width: 80%;
     text-align: center;
 }
 
-.about-us-page iframe{
+.fun-sut-page iframe{
     width: 100%;
     height: 550px;
 }
 
-.about-us-page .btn{
+.fun-sut-page .btn{
     border-radius: 0;
     height:50px;
     width: 50%;
     display:block;
     margin: 2rem auto;
+}
+
+.no-fun-sut {
+    background-color: rgb(215,215,215);
+    width: 80%;
+    margin: 10px auto;
+    height: 400px;
+    border: 2px solid rgb(75,75,75);
+    display: flex;
+    align-items: center;
+}
+
+.no-fun-sut h1{
+    font-size: 32px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.about-us-page{
+    width: 80%;
+    margin: 5rem auto;
+    background-color: #fff;
+    padding-bottom: 4rem;
+}
+
+.about-us-page .title-img{
+    display: block;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.about-us-page p, .about-us-page ul{
+    font-size: 20px;
+    line-height: 1.55;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 300;
+    color: #000000;
+    width: 70%;
+    margin: 10px auto;
+}
+
+.table-area-helper {
+    background-color: white;
+    margin-top: 5%;
+    width: 40%;
 }
