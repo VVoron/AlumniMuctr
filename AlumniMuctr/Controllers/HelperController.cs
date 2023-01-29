@@ -13,10 +13,12 @@ namespace AlumniMuctr.Controllers
 
         List<string> _colomnsName = new List<string>() { "Id", "Дата обращения", "Email", "Имя", "Содержание" };
         string[,] _tableInfo;
+
         public HelperController(ApplicationDbContext db)
         {
             _db = db;
         }
+
         public IActionResult Index()
         {
             IEnumerable<Helper> helpers = _db.Helper.ToList();
