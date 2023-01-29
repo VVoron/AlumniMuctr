@@ -1,0 +1,46 @@
+﻿@model Helper
+
+<div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+        <li>
+            <a asp-controller="Home" asp-action="Index" type="submit">Главная</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Index" type="submit">Все таблицы</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Logout" type="submit">Выйти</a>
+        </li>
+    </ul>
+</div>
+
+<form class="edit-form" method="post" asp-action="Edit" enctype="multipart/form-data">
+    <div class="row pb-2">
+        <h2 class="text-primary">Редактирование пользователя</h2>
+        <hr />
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="Name" class="details">Имя</span>
+            <input asp-for="Name" name="Name" placeholder="Имя" readonly />
+        </div>
+    </div>
+
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="Email" class="details">Email</span>
+            <input asp-for="Email" name="Email" type="text" readonly />
+        </div>
+        <div class="input-box">
+            <span asp-validation-for="Info" class="details">Содержание</span>
+            <input asp-for="Info" name="Info" placeholder="Содержание" type="text" readonly />
+        </div>
+    </div>
+
+    <a asp-controller="Helper" asp-action="Index" class="btn btn-secondary mx-auto" style="width:200px">Вернуться</a>
+</form>

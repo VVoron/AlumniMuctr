@@ -13,5 +13,16 @@ namespace AlumniMuctr.Models
         [Required]
         public string Info { get; set; }
         public DateTime Created = DateTime.Now;
+        public string[] GetInfoForTable()
+        {
+            return new string[]
+            {
+                Id.ToString(),
+                Email.ToString(),
+                Name.ToString(),
+                Info,
+                Created.ToString()
+            };
+        }
     }
 }
