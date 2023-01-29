@@ -1,5 +1,6 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
+using AlumniMuctr.Services.Support;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -54,8 +55,8 @@ namespace AlumniMuctr.Controllers
         [HttpPost]
         public async Task<IActionResult> HelperRequest(Helper obj)
         {
-            _db.Helper.Add(obj);
-            _db.SaveChanges();
+            Support support = new Support();
+            support.AddedNewQuestion(obj, _db);
             return RedirectToAction("Index");
         }
 

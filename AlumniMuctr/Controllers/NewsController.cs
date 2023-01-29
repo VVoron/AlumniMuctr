@@ -1,5 +1,6 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
+using AlumniMuctr.Services.Excel;
 using ClosedXML.Excel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,6 @@ namespace AlumniMuctr.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
-
-        List<string> _colomnsName = new List<string>() { "Id", "Заголовок", "Фото", "Краткое описание", "Полное описание", "Дата создания", "Категория" };
-        string[,] _tableInfo;
 
         public NewsController(ApplicationDbContext db, IWebHostEnvironment appEnvironment)
         {
@@ -31,49 +29,8 @@ namespace AlumniMuctr.Controllers
         [Authorize]
         public ActionResult ExportData()
         {
-            IEnumerable<News> dbList = _db.News;
-
-            List<Categories> dbCategories = _db.Categories.ToList();
-            _tableInfo = new string[dbList.Count(), _colomnsName.Count()];
-
-            int index = 0;
-            foreach (News obj in dbList)
-            {
-                string[] row = obj.GetInfoForTable();
-                for (int i = 0; i < row.Length - 1; i++)
-                    _tableInfo[index, i] = row[i];
-                _tableInfo[index, row.Length - 1] = dbCategories.ElementAt(Convert.ToInt32(row[row.Length - 1]) - 1).Name;
-                index++;
-            }
-
-            using (XLWorkbook workbook = new XLWorkbook())
-            {
-                var worksheet = workbook.Worksheets.Add("Новости");
-
-                index = 1;
-                for (int i = 0; i < _colomnsName.Count(); i++)
-                    worksheet.Cell(index, i + 1).Value = _colomnsName[i];
-                index++;
-
-                for (int i = 0; i < _tableInfo.GetLength(0); i++)
-                {
-                    for (int j = 0; j < _tableInfo.GetLength(1); j++)
-                        worksheet.Cell(index, j + 1).Value = _tableInfo[i, j];
-                    index++;
-                }
-
-                using (var stream = new MemoryStream())
-                {
-                    workbook.SaveAs(stream);
-                    stream.Flush();
-
-                    return new FileContentResult(stream.ToArray(),
-                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-                    {
-                        FileDownloadName = $"Новости_{DateTime.UtcNow.ToShortDateString()}.xlsx"
-                    };
-                }
-            }
+            ExcelWork excel = new ExcelWork();
+            return excel.ExportData("News", _db);
         }
         [Authorize]
         public IActionResult Create()

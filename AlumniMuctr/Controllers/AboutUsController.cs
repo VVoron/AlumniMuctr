@@ -1,6 +1,7 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
 using Microsoft.AspNetCore.Mvc;
+using AlumniMuctr.Services.Support;
 
 namespace AlumniMuctr.Controllers
 {
@@ -20,8 +21,8 @@ namespace AlumniMuctr.Controllers
         [HttpPost]
         public async Task<IActionResult> HelperRequest(Helper obj)
         {
-            _db.Helper.Add(obj);
-            _db.SaveChanges();
+            Support support = new Support();
+            support.AddedNewQuestion(obj, _db);
             return RedirectToAction("Index");
         }
     }
