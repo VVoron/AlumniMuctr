@@ -150,6 +150,7 @@ namespace AlumniMuctr.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndUniversityTime")
