@@ -1,4 +1,5 @@
 using AlumniMuctr.Data;
+using AlumniMuctr.Services.DbTriggers;
 using AlumniMuctr.Services.EmailService;
 using AlumniMuctr.Services.HashService;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -8,9 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-    builder.Configuration.GetConnectionString("DefaultConnection")
-    ));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseTriggers(triggerOptions =>
+    {
+        triggerOptions.AddTrigger<SupportEmailTrgigger>();
+        triggerOptions.AddTrigger<RegistrationTrigger>();
+    });
+
+});
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddTransient<IHashService, HashService>();
 

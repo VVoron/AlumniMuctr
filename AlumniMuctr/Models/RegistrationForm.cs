@@ -27,6 +27,7 @@ namespace AlumniMuctr.Models
         public bool FunSaturday { get; set; } = false;
         public bool DataProcessing { get; set; }= false;
         public DateTime? TimeRegistration { get; set; } = DateTime.Now;
+        public bool IsVerified { get; set; } = false;
 
         public RegistrationForm()
         {
