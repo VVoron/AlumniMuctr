@@ -1217,3 +1217,7 @@ label.error {
     margin-top: 5%;
     width: 40%;
 }
+
+.carousel-control-prev, .carousel-control-next{
+    margin-top: 20%;
+}
