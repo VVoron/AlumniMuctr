@@ -4,15 +4,18 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using AlumniMuctr.Data;
+using AlumniMuctr.Services.HashService;
 
 namespace AlumniMuctr.Controllers
 {
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public AdminController(ApplicationDbContext db)
+        private readonly IHashService _hash;
+        public AdminController(ApplicationDbContext db, IHashService hash)
         {
             _db = db;
+            _hash = hash;
         }
 
         [HttpGet]
@@ -55,8 +58,10 @@ namespace AlumniMuctr.Controllers
                 {
                     return null;
                 }
-                if (user.Password != model.Password)
+
+                if (!_hash.VerifyHashedPassword(user.Password, model.Password))
                     return null;
+
                 var result = Authenticate(user);
                 return result;
             }

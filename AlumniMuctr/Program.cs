@@ -1,11 +1,8 @@
 using AlumniMuctr.Data;
 using AlumniMuctr.Services.EmailService;
-using DocumentFormat.OpenXml.InkML;
+using AlumniMuctr.Services.HashService;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddTransient<IHashService, HashService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

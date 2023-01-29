@@ -1,20 +1,23 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
-using DocumentFormat.OpenXml.Office2010.Excel;
+using AlumniMuctr.Services.HashService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography;
-using System.Text;
+
 
 namespace AlumniMuctr.Controllers
 {
     public class UsersTableController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public UsersTableController(ApplicationDbContext db)
+        private readonly IHashService _hash;
+
+        public UsersTableController(ApplicationDbContext db, IHashService hash)
         {
             _db = db;
+            _hash = hash;
         }
+
         [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
@@ -33,25 +36,28 @@ namespace AlumniMuctr.Controllers
         {
             if (!ModelState.IsValid)
             {
-                if (obj.Password != obj.RepeatPassword)
                 return View(obj);
             }
+
             if (obj.Password != obj.RepeatPassword)
             {
                 TempData["error"] = "Пароли не совпадают!";
                 return View(obj);
             }
+
             User newUser = new User();
             newUser.Name = obj.Name;
-            newUser.Password = obj.Password;
+            newUser.Password = _hash.HashPassword(obj.Password);
             newUser.Role = Enums.Role.Moderator;
+
             _db.User.Add(newUser);
             _db.SaveChanges();
             TempData["success"] = "Пользователь успешно добавлен";
+
             return RedirectToAction("Index");
         }
-        [Authorize(Roles = "admin")]
 
+        [Authorize(Roles = "admin")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -79,7 +85,7 @@ namespace AlumniMuctr.Controllers
         public async Task<IActionResult> Edit(EditUserViewModel obj)
         {
             var objFromDb = _db.User.Find(obj.Id);
-            objFromDb.Password = obj.NewPassword;
+            objFromDb.Password = _hash.HashPassword(obj.NewPassword);
             if (!ModelState.IsValid)
                 return View(obj);
 
