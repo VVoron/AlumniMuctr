@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AlumniMuctr.Models
 {
@@ -15,7 +14,6 @@ namespace AlumniMuctr.Models
         public string Gender { get; set; }
         [Required]
         public DateTime Birthday { get; set; }
-        [Required]
         public string Faculty { get; set; }
         public string? ScientificSupervisor { get; set; }
         [Required]
@@ -27,6 +25,7 @@ namespace AlumniMuctr.Models
         public string? GraduatesOfMUCTRMHTI { get; set; }
         public string? Hobby { get; set; }
         public string? Photo { get; set; }
+        [Required]
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public bool Subscription { get; set; }
