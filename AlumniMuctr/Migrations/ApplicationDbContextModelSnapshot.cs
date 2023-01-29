@@ -165,7 +165,6 @@ namespace AlumniMuctr.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Faculty")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("FunSaturday")

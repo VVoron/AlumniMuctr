@@ -6,17 +6,12 @@ namespace AlumniMuctr.Models
     { 
         [Key]
         public int Id { get; set; } 
-        [Required]
         public string FCs { get; set; }
-        [Required]
         public string FCsгUniversity { get; set; }
-        [Required]
         public string Gender { get; set; }
-        [Required]
         public DateTime Birthday { get; set; }
         public string? Faculty { get; set; }
         public string? ScientificSupervisor { get; set; }
-        [Required]
         public DateTime EndUniversityTime { get; set; }
         public string? CurrentLivingPlace { get; set; }
         public string? CurrentWorkingPlace { get; set; }
@@ -25,13 +20,12 @@ namespace AlumniMuctr.Models
         public string? GraduatesOfMUCTRMHTI { get; set; }
         public string? Hobby { get; set; }
         public string? Photo { get; set; }
-        [Required]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         public string? Phone { get; set; }
         public bool Subscription { get; set; } = false;
         public bool LiveOfAssociation { get; set; } = false;
         public bool FunSaturday { get; set; } = false;
-        public bool DataProcessing { get; set; } = false;
+        public bool DataProcessing { get; set; }= false;
         public DateTime? TimeRegistration { get; set; } = DateTime.Now;
 
         public RegistrationForm()
