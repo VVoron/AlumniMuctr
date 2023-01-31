@@ -15,6 +15,7 @@ namespace AlumniMuctr.Controllers
             _db = db;
             _appEnvironment = appEnvironment;
         }
+
         [Authorize]
         public IActionResult Index()
         {

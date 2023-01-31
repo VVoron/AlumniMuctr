@@ -606,6 +606,7 @@ nav a:hover {
     display: block !important;
     opacity: 0;
     animation: incoming 3.5s forwards;
+    z-index: 5;
 }
 
 @keyframes incoming {
@@ -852,7 +853,6 @@ table th {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-
 }
 
 .btn-group .btn {
@@ -1221,3 +1221,109 @@ label.error {
 .carousel-control-prev, .carousel-control-next{
     margin-top: 20%;
 }
+
+/*News module*/
+.news-module {
+    padding: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) /*scale(0)*/;
+    transition: 200ms ease-in-out;
+    border-radius: 10px;
+    z-index: 15;
+    background-color: white;
+    width: 1500px;
+    max-width: 80%;
+    /*max-height: 1000px;*/
+    height: 900px;
+    overflow-y: scroll;
+    display: none !important;
+    margin: auto;
+}
+
+.news-module img{
+    display: block;
+    margin: auto;
+    width: 80%;
+    object-fit: fill;
+    height: auto;
+}
+
+.news-body{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+}
+
+.news-module.active {
+    transform: translate(-50%, -50%) /*scale(1)*/;
+    display: block !important;
+    animation: regStart 1s ease
+}
+
+.news-header{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-title {
+    border-bottom: 2px solid #8eb9f6;
+    width: 100%;
+}
+
+.news-title h2{
+    font-size: 25px;
+    
+}
+
+.close-news-btn{
+    cursor: pointer;
+    display: block !important;
+    text-align: end;
+    position:relative !important;
+}
+
+.blackout {
+    background-color: rgba(102, 102, 102, 0.5);
+}
+
+.news-title {
+    margin: auto;
+    text-align: center;
+}
+
+.center-photo {
+    margin: auto;
+    text-align: center;
+}
+
+.news-body {
+    line-height: 1.55;
+    font-size: 18px;
+    font-family: 'Roboto',Arial,sans-serif;
+    line-height: 1.55;
+    font-weight: 300;
+    color: #000000;
+    max-width: 100%;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(102, 102, 102, 0.5) !important;
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: none;
+}
+/*End of News module*/

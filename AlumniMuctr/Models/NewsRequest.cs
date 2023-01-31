@@ -24,6 +24,7 @@
             Description = news.Description;
             Created = news.Created;
             PhotoUrl = news.Photo;
+            CategoryId = news.CategoryId;
         }
     }
 }

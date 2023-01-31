@@ -150,7 +150,6 @@ namespace AlumniMuctr.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndUniversityTime")
@@ -179,6 +178,9 @@ namespace AlumniMuctr.Migrations
 
                     b.Property<string>("Hobby")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LiveOfAssociation")
                         .HasColumnType("bit");

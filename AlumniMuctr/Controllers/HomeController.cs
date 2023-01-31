@@ -1,6 +1,8 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
+using AlumniMuctr.Services.SaveFileService;
 using AlumniMuctr.Services.Support;
+using DocumentFormat.OpenXml.Drawing;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -11,11 +13,13 @@ namespace AlumniMuctr.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
+        private readonly ISaveFileService _saveFile;
 
-        public HomeController(ApplicationDbContext db, IWebHostEnvironment appEnvironment)
+        public HomeController(ApplicationDbContext db, IWebHostEnvironment appEnvironment, ISaveFileService saveFile)
         {
             _db = db;
             _appEnvironment = appEnvironment;
+            _saveFile = saveFile;
         }
 
         public IActionResult Index()
@@ -28,26 +32,8 @@ namespace AlumniMuctr.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Registration(RegistrationFormRequest obj)
-        {
-            var entity = new RegistrationForm(obj);
-            if (obj.Photo != null)
-            {
-                var newDirName = Guid.NewGuid();
-
-                string path = _appEnvironment.WebRootPath + "/media/UserPictures/" + newDirName;
-
-                Directory.CreateDirectory(path);
-
-                using (var fileStream = new FileStream(path + "/" + obj.Photo.FileName, FileMode.Create))
-                {
-                    await obj.Photo.CopyToAsync(fileStream);
-                }
-
-                entity.Photo = "/media/UserPictures/" + newDirName + "/" + obj.Photo.FileName;
-            }
-
-
-            _db.RegistrationForm.Add(entity);
+        {    
+            _db.RegistrationForm.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

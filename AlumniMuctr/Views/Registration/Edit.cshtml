@@ -1,4 +1,4 @@
-﻿@model RegistrationForm
+﻿@model RegistrationFormRequest
 
 <div id="menuToggle">
     <input type="checkbox" />
@@ -72,7 +72,21 @@
 
         <div class="input-box">
             <span asp-validation-for="EndUniversityTime" class="details">Год окончания университета</span>
-            <input asp-for="EndUniversityTime" name="EndUniversityTime" type="date" id="ending-year" required>
+            <select asp-for="EndUniversityTime" class="family-select" name="EndUniversityTime" id="ending-year" required>
+                @{
+                    for (int year = DateTime.Now.Year; year >= 1920; year--)
+                    {
+                        if (year == Model.EndUniversityTime)
+                        {
+                            <option selected=@year>@year</option>
+                        }
+                        else 
+                        {
+                            <option value=@year>@year</option>
+                        }
+                    }
+                }
+            </select>
         </div>
 
         <div class="input-box">
@@ -112,6 +126,13 @@
             <br>
             <label for="upload-file">Загрузить файл</label>
             <input asp-for="Photo" name="Photo" type="file" id="upload-file">
+        </div>
+
+        <div class="user-details">
+            <div class="input-box">
+                <span asp-validation-for="PhotoUrl" class="details">Или ссылка на фото</span>
+                <input asp-for="PhotoUrl" name="PhotoUrl" placeholder="example.com/photo1.png">
+            </div>
         </div>
 
         <div class="input-box">

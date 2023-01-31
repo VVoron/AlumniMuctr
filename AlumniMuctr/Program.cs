@@ -2,6 +2,7 @@ using AlumniMuctr.Data;
 using AlumniMuctr.Services.DbTriggers;
 using AlumniMuctr.Services.EmailService;
 using AlumniMuctr.Services.HashService;
+using AlumniMuctr.Services.SaveFileService;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddTransient<IHashService, HashService>();
+builder.Services.AddScoped<ISaveFileService, SaveFileService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

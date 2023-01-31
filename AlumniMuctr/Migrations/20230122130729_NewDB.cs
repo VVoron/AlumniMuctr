@@ -37,38 +37,38 @@ namespace AlumniMuctr.Migrations
                     table.PrimaryKey("PK_Programms", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "RegistrationForm",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FCs = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FCsгUniversity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Faculty = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ScientificSupervisor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EndUniversityTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CurrentLivingPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CurrentWorkingPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CurrentPosition = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SignificantAchievements = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GraduatesOfMUCTRMHTI = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Hobby = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Subscription = table.Column<bool>(type: "bit", nullable: false),
-                    LiveOfAssociation = table.Column<bool>(type: "bit", nullable: false),
-                    FunSaturday = table.Column<bool>(type: "bit", nullable: false),
-                    DataProcessing = table.Column<bool>(type: "bit", nullable: false),
-                    TimeRegistration = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RegistrationForm", x => x.Id);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "RegistrationForm",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        FCs = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        FCsгUniversity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
+            //        Faculty = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        ScientificSupervisor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        EndUniversityTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+            //        CurrentLivingPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        CurrentWorkingPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        CurrentPosition = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        SignificantAchievements = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        GraduatesOfMUCTRMHTI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Hobby = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Subscription = table.Column<bool>(type: "bit", nullable: false),
+            //        LiveOfAssociation = table.Column<bool>(type: "bit", nullable: false),
+            //        FunSaturday = table.Column<bool>(type: "bit", nullable: false),
+            //        DataProcessing = table.Column<bool>(type: "bit", nullable: false),
+            //        TimeRegistration = table.Column<DateTime>(type: "datetime2", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_RegistrationForm", x => x.Id);
+            //    });
 
             migrationBuilder.CreateTable(
                 name: "News",
@@ -108,8 +108,8 @@ namespace AlumniMuctr.Migrations
             migrationBuilder.DropTable(
                 name: "Programms");
 
-            migrationBuilder.DropTable(
-                name: "RegistrationForm");
+            //migrationBuilder.DropTable(
+            //    name: "RegistrationForm");
 
             migrationBuilder.DropTable(
                 name: "Categories");

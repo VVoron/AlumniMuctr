@@ -69,6 +69,33 @@ function newsFilter() {
     document.getElementById("more").classList.remove("hidden");
 }
 
+function getYears(id) {
+    for (let year = 1920; year <= Date().getFullYear(); year++) {
+        let options = document.createElement("OPTION");
+        document.getElementById(id).appendChild(options).innerHTML = year;
+    }
+}
+
+function showNews(element) {
+    var newsBlock = element.nextElementSibling;
+    var body = document.getElementById("temp");
+    var overlay = document.getElementById("overlay");
+    newsBlock.classList.add("active");
+    newsBlock.classList.add("display-flex");
+    newsBlock.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
+    body.classList.add("body-stop-scroll");
+    overlay.classList.add("active");
+}
+
+function closeNews(element) {
+    var newsBlock = element.parentElement;
+    var body = document.getElementById("temp");
+    var overlay = document.getElementById("overlay");
+    newsBlock.classList.remove("active");
+    body.classList.remove("body-stop-scroll");
+    overlay.classList.remove("active");
+}
+
 window.addEventListener("scroll", reveal);
 window.addEventListener("scroll", navigationscroll);
 

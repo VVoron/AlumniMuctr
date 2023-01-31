@@ -35,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\FullRegistration\Index.cshtml" />
     <None Include="Views\News\Index.cshtml" />
     <None Include="Views\Programms\Index.cshtml" />
   </ItemGroup>

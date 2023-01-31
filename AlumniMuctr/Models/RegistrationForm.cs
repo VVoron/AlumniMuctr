@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace AlumniMuctr.Models
 {
     public class RegistrationForm
     { 
         [Key]
-        public int Id { get; set; } 
+        public Guid Id { get; set; } 
         public string FCs { get; set; }
         public string FCsгUniversity { get; set; }
         public string Gender { get; set; }
@@ -36,13 +37,19 @@ namespace AlumniMuctr.Models
 
         public RegistrationForm(RegistrationFormRequest request)
         {
+            Id = request.Id;
             FCs = request.FCs;
             FCsгUniversity = request.FCsгUniversity;
             Gender = request.Gender;
             Birthday = request.Birthday;
             Faculty = request.Faculty;
             ScientificSupervisor = request.ScientificSupervisor;
-            EndUniversityTime = request.EndUniversityTime;
+            EndUniversityTime = DateTime.ParseExact(
+                    request.EndUniversityTime.ToString(),
+                    "yyyy",
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None
+                );
             CurrentLivingPlace = request.CurrentLivingPlace;
             CurrentWorkingPlace = request.CurrentWorkingPlace;
             CurrentPosition = request.CurrentPosition;
@@ -55,7 +62,7 @@ namespace AlumniMuctr.Models
             LiveOfAssociation = request.LiveOfAssociation;
             FunSaturday = request.FunSaturday;
             DataProcessing = request.DataProcessing;
-            //Photo = request.Photo != null ? "wwwroot\\media\\UserPictures\\" + request.Photo.FileName : null;
+            Photo = request.PhotoUrl;
         }
 
         /*"Id",
@@ -83,28 +90,38 @@ namespace AlumniMuctr.Models
         {
             return new string[]
             {
-                this.Id.ToString(),
-                this.FCs,
-                this.FCsгUniversity,
-                this.Gender,
-                this.Birthday.ToString(),
-                this.Faculty,
-                this.ScientificSupervisor,
-                this.EndUniversityTime.ToString(),
-                this.CurrentLivingPlace,
-                this.CurrentWorkingPlace,
-                this.CurrentPosition,
-                this.SignificantAchievements,
-                this.GraduatesOfMUCTRMHTI,
-                this.Hobby,
-                this.Photo,
-                this.Email,
-                this.Phone,
-                this.Subscription.ToString(),
-                this.LiveOfAssociation.ToString(),
-                this.FunSaturday.ToString(),
-                this.DataProcessing.ToString()
+                Id.ToString(),
+                FCs,
+                FCsгUniversity,
+                Gender,
+                Birthday.ToString(),
+                Faculty,
+                ScientificSupervisor,
+                EndUniversityTime.ToString(),
+                CurrentLivingPlace,
+                CurrentWorkingPlace,
+                CurrentPosition,
+                SignificantAchievements,
+                GraduatesOfMUCTRMHTI,
+                Hobby,
+                Photo,
+                Email,
+                Phone,
+                Subscription.ToString(),
+                LiveOfAssociation.ToString(),
+                FunSaturday.ToString(),
+                DataProcessing.ToString()
             };
+        }
+
+        public static bool IsAnyNullOrEmpty(object obj)
+        {
+            return !obj.GetType().GetProperties().All(x => x.GetValue(obj) != null);
+        }
+
+        public static implicit operator RegistrationForm(RegistrationFormRequest request)
+        {
+            return new RegistrationForm(request);
         }
     }
 }

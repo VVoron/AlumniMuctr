@@ -3,6 +3,8 @@
     int i = 0;
 }
 
+<partial name="_Notifications" />
+
 <!-- изменения добавлены налписи-->
 <div id="temp">
 
@@ -72,8 +74,8 @@
 </div>
 
 <!-- Registration form -->
-<div class="reg-form">
-    <div class="reg-container">
+<div class="reg-form" >
+    <div class="reg-container" style="min-height: 500px; margin-top: 15rem">
         <a id="close-btn" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
                 <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
@@ -120,65 +122,20 @@
                 </div>
 
                 <div class="input-box">
-                    <span asp-validation-for="Human.Faculty" class="details">Факультет/кафедра</span>
-                    <input asp-for="Human.Faculty" name="Faculty" type="text" placeholder="ЦИТХиН" required>
-                </div>
-                <div class="input-box">
-                    <span asp-validation-for="Human.ScientificSupervisor" class="details">Научный руководитель</span>
-                    <input asp-for="Human.ScientificSupervisor" name="ScientificSupervisor" type="text" placeholder="Дударов Сергей Павлович" required>
-                </div>
-
-                <div class="input-box">
                     <span asp-validation-for="Human.EndUniversityTime" class="details">Год окончания университета</span>
-                    <input asp-for="Human.EndUniversityTime" name="EndUniversityTime" type="date" id="ending-year" required>
-                </div>
-
-                <div class="input-box">
-                    <span asp-validation-for="Human.CurrentLivingPlace" class="details">Место проживания в настоящее время</span>
-                    <input asp-for="Human.CurrentLivingPlace" name="CurrentLivingPlace" type="text" placeholder="Город, страна" required>
-                </div>
-                <div class="input-box">
-                    <span asp-validation-for="Human.CurrentWorkingPlace" class="details">Место работы в настоящее время</span>
-                    <input asp-for="Human.CurrentWorkingPlace" name="CurrentWorkingPlace" type="text" placeholder="РХТУ" required>
-                </div>
-                <div class="input-box">
-                    <span asp-validation-for="Human.CurrentPosition" class="details">Занимаемая должность</span>
-                    <input asp-for="Human.CurrentPosition" name="CurrentPosition" type="text" placeholder="Директор" required>
-                </div>
-                <div class="input-box">
-                    <span asp-validation-for="Human.SignificantAchievements" class="details">Значимые научные/профессиональные достижения</span>
-                    <textarea asp-for="Human.SignificantAchievements" name="SignificantAchievements" type="text" rows="6" placeholder="Развернутый ответ" required></textarea>
-                </div>
-
-                <div class="input-box">
-                    <span asp-validation-for="Human.GraduatesOfMUCTRMHTI" class="details">Есть ли в Вашей семье выпускники РХТУ - МХТИ?</span>
-                    <select asp-for="Human.GraduatesOfMUCTRMHTI" name="GraduatesOfMUCTRMHTI" class="family-select">
-                        <option value="Нет">Нет</option>
-                        <option value="Родители">Родители</option>
-                        <option value="Дети">Дети</option>
-                        <option value="Другое">Другое</option>
+                    <select asp-for="Human.EndUniversityTime" class="family-select" name="EndUniversityTime" id="ending-year" required>
+                        @{
+                            for (int year = DateTime.Now.Year; year >=1920 ; year--)
+                            {
+                                            <option value=@year>@year</option>
+                            }
+                        }
                     </select>
-                </div>
-
-                <div class="input-box">
-                    <span asp-validation-for="Human.Hobby" class="details">Хобби, увлечения</span>
-                    <input asp-for="Human.Hobby" name="Hobby" type="text" placeholder="Баскетбол" required>
-                </div>
-
-                <div class="file-button">
-                    <span asp-validation-for="Human.Photo" class="details">Загрузите Ваше выпускное фото или актуальное фото (при желании)</span>
-                    <br>
-                    <label for="upload-file">Загрузить файл</label>
-                    <input asp-for="Human.Photo" name="Photo" type="file" id="upload-file">
                 </div>
 
                 <div class="input-box">
                     <span asp-validation-for="Human.Email" class="details">Адресс электронной почты</span>
                     <input asp-for="Human.Email" name="Email" type="email" placeholder="example@muctr.ru" required>
-                </div>
-                <div class="input-box">
-                    <span asp-validation-for="Human.Phone" class="details">Контактный телефон</span>
-                    <input asp-for="Human.Phone" name="Phone" type="tel" placeholder="+7 (999) 999-99-99" required>
                 </div>
 
             </div>
@@ -190,17 +147,7 @@
                 </div>
 
                 <div class="check-box">
-                    <input asp-for="Human.LiveOfAssociation" name="LiveOfAssociation" type="checkbox" id="activist" value="true">
-                    <label for="activist">Хочу активно участвовать в жизни ассоциации</label>
-                </div>
-
-                <div class="check-box">
-                    <input asp-for="Human.FunSaturday" name="FunSaturday" type="checkbox" id="saturday" value="true">
-                    <label for="saturday">Хочу выступить на "Нескучной субботе"</label>
-                </div>
-
-                <div class="check-box">
-                    <input asp-for="Human.DataProcessing" name="DataProcessing" type="checkbox" id="personal-data" value="true">
+                    <input asp-for="Human.DataProcessing" name="DataProcessing" type="checkbox" id="personal-data" value="true" required>
                     <label for="personal-data">Согласие на обработку персональных данных</label>
                 </div>
             </div>
@@ -272,16 +219,41 @@
             {
                 @if (i != 3)
                 {
-                    @Html.Raw($"<li class='news-block {obj.CategoryId}'>")
+                    @Html.Raw($"<li class='news-block {obj.CategoryId}' onclick='showNews(this)'>")
                     i++;
-                }else{
-                    @Html.Raw($"<li class='news-block {obj.CategoryId} hidden'>")
+                }
+                else
+                {
+                    @Html.Raw($"<li class='news-block {obj.CategoryId} hidden' onclick='showNews(this)'>")
                 }
                     <img src="@obj.Photo" alt="">
                     <h2>@obj.Title</h2>
                     <p class="info">@obj.BriefDescription</p>
                     <p class="date">@obj.Created.ToString("dd/MM/yyyy")</p>
+
                 @Html.Raw("</li>")
+
+                <div class="news-module">
+                        <span class="close-news-btn" onclick="closeNews(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#3a89f9" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                            </svg>
+                        </span>
+                        <div class="news-header">
+                            <div class="news-title">
+                                <h2>@obj.Title</h2>
+                            </div>
+                            
+                        </div>
+                        <div class="center-photo">
+                            <img class="" src="@obj.Photo" alt="">
+                        </div>
+                        <div class="news-body">
+                            @Html.Raw(@obj.Description)
+                        </div>
+                </div>
+                <div id="overlay"></div>
+                
             }
         </ul>
         <button id="more" type="button" class="btn btn-primary">Показать ещё</button>
@@ -321,13 +293,14 @@
                     for (int k = 0; k < Images.Length; k++)
                     {
                         imagesList.Add(String.Format(@"{0}/{1}", "/media/colladje", Images[k].Name));
-                        @Html.Raw("<img src='" + imagesList[k] + "' class='scale' />")
+                                    @Html.Raw("<img src='" + imagesList[k] + "' class='scale' />")
                         //Console.WriteLine(String.Format(@"{0}/{1}", "/media/colladje", Images[k].Name));
                     }
                 }
             </p>
         </div>
     </div>
+
 </main>
 
 <footer id="info">

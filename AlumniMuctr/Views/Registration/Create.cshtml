@@ -1,4 +1,4 @@
-﻿@model RegistrationForm
+﻿@model RegistrationFormRequest
 
 <div id="menuToggle">
     <input type="checkbox" />
@@ -18,7 +18,7 @@
     </ul>
 </div>
 
-<form class="edit-form" method="post" asp-action="Edit" enctype="multipart/form-data">
+<form class="edit-form" method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="row pb-2">
         <h2 class="text-primary">Добавить анкету</h2>
         <hr />
@@ -72,7 +72,14 @@
 
         <div class="input-box">
             <span asp-validation-for="EndUniversityTime" class="details">Год окончания университета</span>
-            <input asp-for="EndUniversityTime" name="EndUniversityTime" type="date" id="ending-year" required>
+            <select asp-for="EndUniversityTime" class="family-select" name="EndUniversityTime" id="ending-year" required>
+                @{
+                    for (int year = DateTime.Now.Year; year >= 1920; year--)
+                    {
+                        <option value=@year>@year</option>
+                    }
+                }
+            </select>
         </div>
 
         <div class="input-box">

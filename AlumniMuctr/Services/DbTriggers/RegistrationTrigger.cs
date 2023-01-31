@@ -17,15 +17,17 @@ namespace AlumniMuctr.Services.DbTriggers
         {
             var email = new Email();
             email.To = context.Entity.Email;
+            email.Subject = "Заявка на регистрацию в Ассоциации Выпускников РХТУ";
 
             if (context.ChangeType == ChangeType.Added)
             {
-                email.Subject = "Заявка на регистрацию в Ассоциации Выпускников РХТУ";
-                email.Body = "Ваша заявка принята, заполните дополнитительные данные по ссылке ниже. Это ускорит одобрение вашего профиля.";
-            } else if (context.ChangeType == ChangeType.Modified)
+                email.Body = "Ваша заявка принята, заполните дополнитительные данные по ссылке ниже. Это ускорит одобрение вашего профиля." +
+                    $"</br> <a href=\"https://localhost:7282/FullRegistration/{context.Entity.Id}\"";
+
+            }
+            else if (context.ChangeType == ChangeType.Modified)
             {
-                email.Subject = "Заявка на регистрацию в Ассоциации Выпускников РХТУ";
-                email.Body = "Поздравляю, вы заполнилили ";
+                email.Body = "Поздравляю, вы заполнилили все данные";
             }
 
             _email.SendEmail(email);

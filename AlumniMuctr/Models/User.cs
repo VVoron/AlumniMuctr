@@ -1,8 +1,5 @@
 ﻿using AlumniMuctr.Enums;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Security.Claims;
 
 namespace AlumniMuctr.Models
 {

@@ -1,27 +1,32 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
 using AlumniMuctr.Services.Excel;
-using ClosedXML.Excel;
+using AlumniMuctr.Services.SaveFileService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlumniMuctr.Controllers
 {
+    [Authorize]
     public class RegistrationController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly IWebHostEnvironment _appEnvironment;
+        private readonly ISaveFileService _saveFile;
 
-        public RegistrationController(ApplicationDbContext db)
+        public RegistrationController(ApplicationDbContext db, IWebHostEnvironment appEnvironment, ISaveFileService saveFile)
         {
             _db = db;
+            _appEnvironment = appEnvironment;
+            _saveFile = saveFile;
         }
-        [Authorize]
+
         public IActionResult Index()
         {
             IEnumerable<RegistrationForm> dbList = _db.RegistrationForm;
             return View(dbList);
         }
-        [Authorize]
+
         public ActionResult ExportData()
         {
             ExcelWork excel = new ExcelWork();
@@ -29,7 +34,6 @@ namespace AlumniMuctr.Controllers
         }
 
         //Get
-        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -38,10 +42,16 @@ namespace AlumniMuctr.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(RegistrationForm obj)
+        public async Task<IActionResult> Create(RegistrationFormRequest obj)
         {
             if (ModelState.IsValid)
             {
+                if (obj.Photo != null)
+                {
+                    string path = "/media/UserPictures/";
+                    obj.PhotoUrl = await _saveFile.SaveFile(_appEnvironment.WebRootPath, path, obj.Photo);
+                }
+
                 _db.RegistrationForm.Add(obj);
                 _db.SaveChanges();
                 TempData["success"] = "Заявка успешно создана";
@@ -51,28 +61,35 @@ namespace AlumniMuctr.Controllers
         }
 
         //Get
-        [Authorize]
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(Guid? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id == Guid.Empty)
             {
                 return NotFound();
             }
+            
             var objFromDb = _db.RegistrationForm.Find(id);
             if (objFromDb == null)
             {
                 NotFound();
             }
-            return View(objFromDb);
+
+            return View(new RegistrationFormRequest(objFromDb));
         }
 
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(RegistrationForm obj)
+        public async Task<IActionResult> Edit(RegistrationFormRequest obj)
         {
             if (ModelState.IsValid)
-            {
+            { 
+                if (obj.Photo != null)
+                {
+                    string path = "/media/UserPictures/";
+                    obj.PhotoUrl = await _saveFile.SaveFile(_appEnvironment.WebRootPath, path, obj.Photo);
+                }
+
                 _db.RegistrationForm.Update(obj);
                 _db.SaveChanges();
                 TempData["success"] = "Заявка успешно изменена";
@@ -80,8 +97,8 @@ namespace AlumniMuctr.Controllers
             }
             return View(obj);
         }
-        [Authorize]
-        public IActionResult Delete(int? id)
+
+        public IActionResult Delete(Guid? id)
         {
             var obj = _db.RegistrationForm.Find(id);
             if (obj == null)
