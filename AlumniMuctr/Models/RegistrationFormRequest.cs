@@ -27,6 +27,7 @@ namespace AlumniMuctr.Models
         public bool LiveOfAssociation { get; set; }
         public bool FunSaturday { get; set; }
         public bool DataProcessing { get; set; }
+        public bool IsVerified { get; set; }
 
         public RegistrationFormRequest()
         {
@@ -56,6 +57,7 @@ namespace AlumniMuctr.Models
             FunSaturday = request.FunSaturday;
             DataProcessing = request.DataProcessing;
             PhotoUrl = request.Photo;
+            IsVerified = request.IsVerified;
         }
 
         public static implicit operator RegistrationFormRequest(RegistrationForm entity)

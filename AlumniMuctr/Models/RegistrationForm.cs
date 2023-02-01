@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DocumentFormat.OpenXml.Office2010.Drawing;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace AlumniMuctr.Models
@@ -63,6 +64,7 @@ namespace AlumniMuctr.Models
             FunSaturday = request.FunSaturday;
             DataProcessing = request.DataProcessing;
             Photo = request.PhotoUrl;
+            IsVerified = request.IsVerified;
         }
 
         /*"Id",

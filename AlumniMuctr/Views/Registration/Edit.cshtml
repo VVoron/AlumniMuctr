@@ -168,6 +168,13 @@
         </div>
     </div>
 
+    <div claclass="reg-checkboxes">
+        <div class="check-box">
+            <input asp-for="IsVerified" name="IsVerified" type="checkbox" id="is-verified" value="true">
+            <label for="is-verified">Заявка одобрена</label>
+        </div>
+    </div>
+
     <button type="submit" class="btn btn-primary" style="width:200px">Обновить</button>
     <a asp-controller="Registration" asp-action="Index" class="btn btn-secondary" style="width:200px">Вернуться</a>
 </form>
