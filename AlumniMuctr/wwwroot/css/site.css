@@ -394,6 +394,7 @@ nav a:hover {
     border: 1.5px solid #000000;
     border-radius: 40px;
     padding: 5px 10px;
+    z-index: 9;
 }
 
 .active-category {
@@ -1311,6 +1312,7 @@ label.error {
 }
 
 #overlay {
+    visibility: hidden;
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
@@ -1324,6 +1326,7 @@ label.error {
 #overlay.active {
     opacity: 1;
     pointer-events: none;
+    visibility: visible;
 }
 
 #overlay2 {
@@ -1345,4 +1348,8 @@ label.error {
 
 .pointer-cursor{
     cursor: pointer;
+}
+
+.btn-more{
+    z-index: 9;
 }
