@@ -19,7 +19,11 @@ namespace AlumniMuctr.Services.DbTriggers
             email.To = context.Entity.Email;
             email.Subject = "Заявка на регистрацию в Ассоциации Выпускников РХТУ";
 
-            if (context.ChangeType == ChangeType.Added)
+            if (context.Entity.IsVerified)
+            {
+                email.Body = "Поздравляем! Ваша заявка была одобрена!";
+            }
+            else if (context.ChangeType == ChangeType.Added)
             {
                 email.Body = "Ваша заявка принята, заполните дополнитительные данные по ссылке ниже. Это ускорит одобрение вашего профиля." +
                     $"</br> <a href=\"https://localhost:7282/FullRegistration/{context.Entity.Id}\"";
@@ -27,7 +31,7 @@ namespace AlumniMuctr.Services.DbTriggers
             }
             else if (context.ChangeType == ChangeType.Modified)
             {
-                email.Body = "Поздравляю, вы заполнилили все данные";
+                email.Body = "Личные данные были успешно изменены.";
             }
 
             _email.SendEmail(email);
