@@ -1259,7 +1259,7 @@ label.error {
 .news-module.active {
     transform: translate(-50%, -50%) /*scale(1)*/;
     display: block !important;
-    animation: regStart 1s ease
+    animation: regStart 1s ease;
 }
 
 .news-header{
@@ -1319,11 +1319,30 @@ label.error {
     right: 0;
     left: 0;
     background-color: rgba(102, 102, 102, 0.5) !important;
-    pointer-events: none;
 }
 
 #overlay.active {
     opacity: 1;
     pointer-events: none;
 }
+
+#overlay2 {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(102, 102, 102, 0.5) !important;
+}
+
+#overlay2.active {
+    opacity: 1;
+    pointer-events: none;
+}
 /*End of News module*/
+
+.pointer-cursor{
+    cursor: pointer;
+}

@@ -215,6 +215,8 @@
         </ul>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <div id="overlay"></div>
+
             @foreach (News obj in Model.AllNews)
             {
                 @if (i != 3)
@@ -251,26 +253,47 @@
                         <div class="news-body">
                             @Html.Raw(@obj.Description)
                         </div>
+
                 </div>
-                <div id="overlay"></div>
-                
             }
+
         </ul>
+
         <button id="more" type="button" class="btn btn-primary">Показать ещё</button>
     </div>
 
     <div id="programms" class="main-block programms">
         <h1>Программы</h1>
         <div class="justify-content-center">
+
                 <ol class="blocks">
+                <div id="overlay2"></div>
+
                     @foreach (Programms obj in Model.AllProgramms)
                     {
-                        <li class="in-block">
+                    <li class="in-block pointer-cursor" onclick="showProgramm(this)">
                             <h2>@obj.Title</h2>
                             <p class="info">
                                 @Html.Raw(obj.BriefDescription)
                             </p>
-                        </li>
+                    </li>
+
+                    <div class="news-module">
+                        <span class="close-news-btn" onclick="closeProgramm(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#3a89f9" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                            </svg>
+                        </span>
+                        <div class="news-header">
+                            <div class="news-title">
+                                <h2>@obj.Title</h2>
+                            </div>
+
+                        </div>
+                        <div class="news-body">
+                            @Html.Raw(@obj.Description)
+                        </div>
+                    </div>
                     }
                 </ol>
         </div>

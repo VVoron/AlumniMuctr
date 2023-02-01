@@ -81,7 +81,6 @@ function showNews(element) {
     var body = document.getElementById("temp");
     var overlay = document.getElementById("overlay");
     newsBlock.classList.add("active");
-    newsBlock.classList.add("display-flex");
     newsBlock.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
     body.classList.add("body-stop-scroll");
     overlay.classList.add("active");
@@ -92,6 +91,26 @@ function closeNews(element) {
     var body = document.getElementById("temp");
     var overlay = document.getElementById("overlay");
     newsBlock.classList.remove("active");
+    body.classList.remove("body-stop-scroll");
+    overlay.classList.remove("active");
+}
+
+function showProgramm(element) {
+    var programmBlock = element.nextElementSibling;
+    var body = document.getElementById("temp");
+    var overlay = document.getElementById("overlay2");
+
+    programmBlock.classList.add("active");
+    programmBlock.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
+    body.classList.add("body-stop-scroll");
+    overlay.classList.add("active");
+}
+
+function closeProgramm(element) {
+    var programmBlock = element.parentElement;
+    var body = document.getElementById("temp");
+    var overlay = document.getElementById("overlay2");
+    programmBlock.classList.remove("active");
     body.classList.remove("body-stop-scroll");
     overlay.classList.remove("active");
 }
