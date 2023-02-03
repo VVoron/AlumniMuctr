@@ -1,7 +1,10 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Crypto;
+using System.Xml;
 
 namespace AlumniMuctr.Services.Excel
 {
@@ -11,20 +14,18 @@ namespace AlumniMuctr.Services.Excel
         private List<string> colomnsHelper = new List<string>() { "Id", "Дата обращения", "Email", "Имя", "Содержание" };
         private List<string> colomnsRegForm = new List<string>() {
                 "Id",
+                "Верифицирован",
                 "ФИО",
-                "ФИО в период обучения ",
-                "Пол",
+                "Фамилия в период обучения",
                 "Дата рождения",
                 "Факультет/кафедра",
-                "Научный руководитель",
                 "Год окончания университета",
-                "Место проживания в настоящее время",
                 "Место работы в настоящее время",
                 "Занимаемая должность",
                 "Значимые научные/профессиональные достижения",
                 "Есть ли в Вашей семье выпускники РХТУ - МХТИ?",
                 "Хобби, увлечения",
-                "Загрузите Ваше выпускное фото или актуальное фото (при желании)",
+                "Фото",
                 "Адресс электронной почты",
                 "Контактный телефон",
                 "Подписаться на рассылку новостной информации",
@@ -60,12 +61,18 @@ namespace AlumniMuctr.Services.Excel
                         }
                         break;
                     }
-                case "Reg":
+                case "Reg-1":
+                case "Reg-2":
+                case "Reg-3":
                     {
                         currentColomns = colomnsRegForm;
                         name = "Анкеты";
 
                         IEnumerable<RegistrationForm> regForm = db.RegistrationForm;
+                        if (tableName == "Reg-2")
+                            regForm = db.RegistrationForm.Where(x => x.IsVerified).ToList();
+                        else if (tableName == "Reg-3")
+                            regForm = db.RegistrationForm.Where(x => !x.IsVerified).ToList();
                         tableInfo = new string[regForm.Count(), currentColomns.Count()];
                         foreach (RegistrationForm obj in regForm)
                         {

@@ -27,10 +27,22 @@ namespace AlumniMuctr.Controllers
             return View(dbList);
         }
 
-        public ActionResult ExportData()
+        public ActionResult ExportDataAll()
         {
             ExcelWork excel = new ExcelWork();
-            return excel.ExportData("Reg", _db);
+            return excel.ExportData("Reg-1", _db);
+        }
+
+        public ActionResult ExportDataVeify()
+        {
+            ExcelWork excel = new ExcelWork();
+            return excel.ExportData("Reg-2", _db);
+        }
+
+        public ActionResult ExportDataNotVerify()
+        {
+            ExcelWork excel = new ExcelWork();
+            return excel.ExportData("Reg-3", _db);
         }
 
         //Get

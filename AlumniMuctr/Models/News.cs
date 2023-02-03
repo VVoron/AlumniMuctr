@@ -11,6 +11,7 @@ namespace AlumniMuctr.Models
         public string BriefDescription { get; set; }
         public string Description { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime? StartTime { get; set; }
         public Categories Category { get; set; }
         public int CategoryId { get; set; }
 

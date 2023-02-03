@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Office2010.Drawing;
+using Org.BouncyCastle.Crypto;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
@@ -60,33 +61,12 @@ namespace AlumniMuctr.Models
             Photo = request.PhotoUrl;
             IsVerified = request.IsVerified;
         }
-
-        /*"Id",
-                "ФИО",
-                "ФИО в период обучения ",
-                "Пол",
-                "Дата рождения",
-                "Факультет/кафедра",
-                "Научный руководитель",
-                "Год окончания университета",
-                "Место проживания в настоящее время",
-                "Место работы в настоящее время",
-                "Занимаемая должность",
-                "Значимые научные/профессиональные достижения",
-                "Есть ли в Вашей семье выпускники РХТУ - МХТИ?",
-                "Хобби, увлечения",
-                "Загрузите Ваше выпускное фото или актуальное фото (при желании)",
-                "Адресс электронной почты",
-                "Контактный телефон",
-                "Подписаться на рассылку новостной информации",
-                "Хочу активно участвовать в жизни ассоциации",
-                "Хочу выступить на 'Нескучной субботе'",
-                "Согласие на обработку персональных данных"*/
         public string[] GetInfoForTable()
         {
             return new string[]
             {
                 Id.ToString(),
+                (IsVerified) ? "+" : "-",
                 FCs,
                 FCsгUniversity,
                 Birthday.ToString(),
@@ -100,10 +80,10 @@ namespace AlumniMuctr.Models
                 Photo,
                 Email,
                 Phone,
-                Subscription.ToString(),
-                LiveOfAssociation.ToString(),
-                FunSaturday.ToString(),
-                DataProcessing.ToString()
+                (Subscription) ? "да" : "нет",
+                (LiveOfAssociation) ? "+" : "-",
+                (FunSaturday) ? "+" : "-",
+                (DataProcessing) ? "+" : "-"
             };
         }
 

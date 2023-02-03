@@ -3,6 +3,47 @@ const imgNotChecked = document.querySelector('.icon_close');
 
 var category = 0; //0 - all, 1 - events, 2 - jobs, 3 - anouncments
 
+function openRegForm() {
+    document.getElementById("funreg").classList.remove("hidden");
+    document.getElementById("overlay").classList.add("active");
+    document.getElementById("temp").classList.add("body-stop-scroll");
+    setTimeout(() => { document.getElementById("back").addEventListener("click", closeRegForm); }, 200);
+}
+
+function closeRegForm() {
+    document.getElementById("funreg").classList.add("hidden");
+    document.getElementById("overlay").classList.remove("active");
+    document.getElementById("temp").classList.remove("body-stop-scroll");
+    document.getElementById("back").removeEventListener("click", closeRegForm);
+}
+
+function filterRegs(filter) {
+    document.querySelector(".filter.active").classList.remove("active");
+    document.querySelector("." + filter).classList.add("active");
+
+    var btns = document.querySelectorAll(".btn-secondary");
+    btns.forEach(element => {
+        if (!element.classList.contains("hidden"))
+            element.classList.add("hidden")
+    });
+    document.querySelector(".btn." + filter).classList.remove("hidden");
+
+    var table = document.querySelector("table");
+    var tr = table.getElementsByTagName("tr");
+    for (var i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td.className == "false" && filter == "verify") {
+            if (!tr[i].classList.contains("hidden"))
+                tr[i].classList.add("hidden");
+        } else if (td.className == "true" && filter == "not-verify") {
+            if (!tr[i].classList.contains("hidden"))
+                tr[i].classList.add("hidden");
+        } else {
+            tr[i].classList.remove("hidden");
+        }
+    }
+}
+
 function reveal() {
     var reveals = document.querySelectorAll(".main-block");
     for (var i = 0; i < reveals.length; i++) {

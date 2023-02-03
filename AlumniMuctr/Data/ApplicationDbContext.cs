@@ -21,5 +21,6 @@ namespace AlumniMuctr.Data
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Helper> Helper { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<FunSaturdayReg> FunSaturdayReg { get; set; }
     }
 }

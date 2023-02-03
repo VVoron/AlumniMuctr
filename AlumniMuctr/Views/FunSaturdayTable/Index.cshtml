@@ -1,0 +1,89 @@
+﻿@model FunSaturdayWithEvent
+
+@{
+    int index = 0;
+}
+
+<div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+        <li>
+            <a asp-controller="Home" asp-action="Index" type="submit">Главная</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Index" type="submit">Все таблицы</a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Logout" type="submit">Выйти</a>
+        </li>
+    </ul>
+</div>
+
+<partial name="_Notifications" />
+<div class="container p-3 table-area-fun-sat">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Список заявок на нескучную субботу</h2>
+        </div>
+    </div>
+    <br />
+
+
+    <table class="table table-bordered" style="width: 100%">
+        <thead class="reg-table-head">
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Событие</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (FunSaturdayReg obj in Model.FunSaturdayReg)
+            {
+                <tr>
+                    <td>
+                        @obj.Id
+                    </td>
+                    <td>
+                        @obj.Email
+                    </td>
+                    <td>
+                        @Model.News[index]
+                    </td>
+                    @if (obj.Status == AlumniMuctr.Enums.Status.Independent)
+                    {
+                        <td>
+                            Выпускник
+                        </td>
+                    }else if (obj.Status == AlumniMuctr.Enums.Status.Student)
+                    {
+                        <td>
+                            Студент
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Сторонний слушатель
+                        </td>
+                    }
+                    <td width="20%">
+                        <div class="w-75 btn-group" role="group">
+                            <a class="text-decoration-none btn btn-danger" asp-controller="FunSaturdayTable" asp-action="Delete" asp-route-id="@obj.Id" onclick="return confirm('Вы уверены что хотите удалить заявку?')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </td>
+                    @{index++;}
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

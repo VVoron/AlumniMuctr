@@ -830,7 +830,7 @@ footer a {
 
 .table-area{
     background-color: white;
-    margin-top: 5%;
+    margin-top: 0;
 }
 
 .table-area-users {
@@ -1216,7 +1216,7 @@ label.error {
 .table-area-helper {
     background-color: white;
     margin-top: 5%;
-    width: 40%;
+    width: 650px;
 }
 
 .carousel-control-prev, .carousel-control-next{
@@ -1320,6 +1320,7 @@ label.error {
     bottom: 0;
     right: 0;
     left: 0;
+    z-index: 12;
     background-color: rgba(102, 102, 102, 0.5) !important;
 }
 
@@ -1352,4 +1353,102 @@ label.error {
 
 .btn-more{
     z-index: 9;
+}
+
+.reg-filters {
+    margin-left: 15%;
+    margin-top: 5%;
+}
+
+.filter {
+    background-color: #d9d9d9;
+    border-radius: 10px 10px 0 0;
+    margin-right: 2px;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.filter.active {
+    border-radius: 0;
+    background-color: #fff;
+}
+
+#funreg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px 45px;
+    width: 450px;
+    background-color: #fff;
+    z-index: 22;
+}
+
+#funreg h1{
+    margin-bottom: 11px;
+    font-size: 32px;
+    line-height: 1.23;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+}
+
+#funreg p{
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.55;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 300;
+    color: #000000;
+}
+
+#funreg input-box{
+    margin-top: 20px;
+}
+
+#funreg span{
+    padding-bottom: 5px;
+    padding-right: 10px;
+    font-size: 18px;
+    line-height: 1.55;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 300;
+    color: #000000;
+}
+
+#funreg label{
+    margin: 5px;
+    font-size: 14px;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 300;
+    color: #000000;
+}
+
+#funreg input{
+    font-size: 14px;
+    line-height: 1.55;
+    font-family: 'Roboto',Arial,sans-serif;
+    font-weight: 300;
+}
+
+#funreg .btn{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 8px !important;
+    width: 100%;
+}
+
+.fun-reg-btn{
+    padding: 12px !important;
+    width: 300px !important;
+    font-size: 30px;
+    height: auto !important;
+}
+
+.table-area-fun-sat {
+    background-color: white;
+    margin-top: 5%;
+    width: 650px;
 }

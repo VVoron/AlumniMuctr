@@ -1,157 +1,192 @@
-﻿@model NewsAndHelper
+﻿@model FunSatPage
 @{
     int i = 0;
 }
 
-<!--Top Right Menu-->
-<div id="menuToggle">
-    <input type="checkbox" />
-    <span></span>
-    <span></span>
-    <span></span>
-    <ul id="menu">
-        @if (User.Identity.IsAuthenticated)
-        {
-            @Html.Raw("<a href='/admin'><li>Панель админа</li></a>")
-        }
-        <a asp-controller="Home" asp-action="Index">
-            <li>Главная</li>
-        </a>
-        <a href="#">
-        <li>Связь поколений</li></a>
-        <a asp-controller="AboutUs" asp-action="Index">
-        <li>О нас</li></a>
-    </ul>
-</div>
-
-<div id="temp">
-    <!-- изменения форма саппорт -->
-    <div class="contact_form">
-        <div class="mob_top_panel">
-            <button class="top_btn_support">
-                <svg role="presentation" class="icon_closes" style="visibility: none;" width="25px" height="25px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g stroke="none" stroke-width="1" fill-rule="evenodd">
-                        <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
-                        <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
-                    </g>
-                </svg>
-            </button>
-        </div>
-        <div class="box">
-            <h2 class="heading">Свяжитесь с нами!</h2>
-            <form class="mb-5" method="post" asp-action="HelperRequest" id="contactForm" name="contactForm" novalidate="novalidate">
-
-                <div class="row">
-                    <div class="col-md-12 form-group">
-                        <label for="email" class="col-form-label">Ваш email</label>
-                        <input asp-for="@Model.Helper.Email" type="text" class="form-control" name="Email" id="email" placeholder="example@muctr.ru" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 form-group">
-                        <label for="name" class="col-form-label">Ваше имя</label>
-                        <input asp-for="@Model.Helper.Name" type="text" class="form-control" name="Name" id="name" placeholder="Иван Иванов" required>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-12 form-group">
-                        <label for="message" class="col-form-label">Ваше сообщение</label>
-                        <textarea asp-for="@Model.Helper.Info" class="form-control" name="Info" id="message" cols="30" rows="7" required></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <input type="submit" value="ОТПРАВИТЬ" class="btn_send_message btn btn-block btn-primary rounded-0 py-2 px-4">
-                        <span class="submitting"></span>
-                    </div>
-                </div>
-            </form>
-
-            <div id="form-message-warning mt-4"></div>
-            <div id="form-message-success">
-                Успешно!
-            </div>
-        </div>
-    </div>
-    <!-- изменения кнопка саппорт -->
-    <button class="btn_support" data-toggle-text="Close">
-        <svg role="presentation" class="icon_show" style="fill:#ffffff;" width="28px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.6 17.5">
-            <path d="M3.7 17.5v-4.8H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0h14.6c1.1 0 2 .9 2 2v8.8c0 1.1-.9 2-2 2H9l-5.3 4.7zM2 1c-.6 0-1 .4-1 1v8.8c0 .5.4 1 1 1h2.8v3.5l3.8-3.5h8c.5 0 1-.4 1-1V2c0-.5-.4-1-1-1H2z"></path>
-        </svg>
-        <svg role="presentation" class="icon_close unvis" style="visibility: none;" width="16px" height="16px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <g stroke="none" stroke-width="1" fill-rule="evenodd">
-                <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
-                <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
-            </g>
-        </svg>
-    </button>
-</div>
-
-<div class="fun-sut-page">
-    <h4>Прекрасная новость для всех любознательных, эрудитов и тех, кому просто интересно жить!</h4>
-    <p class="main-info">
-        В РХТУ им. Д.И. Менделеева начал свою работу Профессиональный клуб «Нескучная суббота», созданный под эгидой Ассоциации выпускников университета «Менделеевцы».
-        У Вас есть замечательная возможность узнать много нового из лекций известных ученых и экспертов в различных областях науки и знаний. Заседания клуба проходят каждую субботу в онлайн-формате. Чтобы послушать лекцию или посмотреть видео прошлых лекций достаточно зарегистрироваться на сайте Ассоциации выпускников «Менделеевцы».
-        Приглашаем всех желающих принять участие в заседаниях клуба, послушать интересные лекции и подискутировать!
-    </p>
-
-
-    <h1>АНОНСЫ</h1>
-    @if (Model.News.Count() != 0)
-    {
-        <div class="news owl-carousel">
+<partial name="_Notifications" />
+<form method="post" asp-action="Registration" id="funreg" class="hidden">
+    <h1>Нескучная суббота</h1>
+    <p>Зарегестрируйтесь для получения информации о проведении встреч клуба!</p>
+    <div class="input-box">
+        <span asp-validation-for="FunSaturdayReg.NewsId">Выберите интересующий вас анонс</span>
+        <select asp-for="FunSaturdayReg.NewsId" name="NewsId" class="family-select">
             @foreach (News obj in Model.News)
             {
-                <div class='news-block item'>
-                    <img src="@obj.Photo" alt="">
-                    <h2>@obj.Title</h2>
-                    <p class="info">@obj.BriefDescription</p>
-                    <p class="date">@obj.Created.ToString("dd/MM/yyyy")</p>
-                </div>
+                <option value="@obj.Id">
+                    @(obj.StartTime != null ? Convert.ToDateTime(obj.StartTime).ToString("dd/MM/yyyy") + " - " : "")@obj.Title
+                </option>
             }
+        </select>
+    </div>
+    <div class="input-box">
+        <span>Укажите свой статус</span>
+        <br>
+        <input asp-for="FunSaturdayReg.Status" type="radio"
+               name="Status" value="0" id="status1">
+        <label for="status1">Выпускник</label>
+        <br>
+        <input asp-for="FunSaturdayReg.Status" type="radio" id="status2"
+               name="Status" value="1">
+        <label for="status2">Студент</label>
+        <br>
+        <input asp-for="FunSaturdayReg.Status" type="radio" id="status3"
+               name="Status" value="2">
+        <label for="status3">Сторонний слушатель</label>
+    </div>
+    <div class="user-details">
+        <div class="input-box">
+            <span asp-validation-for="FunSaturdayReg.Email">Email</span>
+            <input asp-for="FunSaturdayReg.Email" name="Email" placeholder="example@muctr.ru" required>
         </div>
-        <a href="#" class="btn btn-primary">Регистрация</a>
-    }
-    else
-    {
-        <div class="no-fun-sut">
-            <h1>Нет предстоящих анонсов</h1>
-        </div>
-    }
+    </div>
+    <input type="submit" class="btn btn-primary" value="Записаться" />
+</form>
 
-    <h1>Лекции</h1>
+<div id="back">
+    <!--Top Right Menu-->
+    <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.Raw("<a href='/admin'><li>Панель админа</li></a>")
+            }
+            <a asp-controller="Home" asp-action="Index">
+                <li>Главная</li>
+            </a>
+            <a href="#">
+            <li>Связь поколений</li></a>
+            <a asp-controller="AboutUs" asp-action="Index">
+            <li>О нас</li></a>
+        </ul>
+    </div>
+    <div>
+        <!-- изменения форма саппорт -->
+        <div class="contact_form">
+            <div class="mob_top_panel">
+                <button class="top_btn_support">
+                    <svg role="presentation" class="icon_closes" style="visibility: none;" width="25px" height="25px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            <div class="box">
+                <h2 class="heading">Свяжитесь с нами!</h2>
+                <form class="mb-5" method="post" asp-action="HelperRequest" id="contactForm" name="contactForm" novalidate="novalidate">
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <iframe src="https://www.youtube.com/embed/4q9YVjwgjPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="carousel-item">
-                <iframe src="https://www.youtube.com/embed/iqk0YkW-F8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="carousel-item">
-                <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="carousel-item">
-                <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="carousel-item">
-                <iframe src="https://www.youtube.com/embed/pyU_Qm9i9gg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="carousel-item">
-                <iframe src="https://www.youtube.com/embed/MuRwDHKGx7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="email" class="col-form-label">Ваш email</label>
+                            <input asp-for="@Model.Helper.Email" type="text" class="form-control" name="Email" id="email" placeholder="example@muctr.ru" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="name" class="col-form-label">Ваше имя</label>
+                            <input asp-for="@Model.Helper.Name" type="text" class="form-control" name="Name" id="name" placeholder="Иван Иванов" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-12 form-group">
+                            <label for="message" class="col-form-label">Ваше сообщение</label>
+                            <textarea asp-for="@Model.Helper.Info" class="form-control" name="Info" id="message" cols="30" rows="7" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" value="ОТПРАВИТЬ" class="btn_send_message btn btn-block btn-primary rounded-0 py-2 px-4">
+                            <span class="submitting"></span>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="form-message-warning mt-4"></div>
+                <div id="form-message-success">
+                    Успешно!
+                </div>
             </div>
         </div>
-        <button class="carousel-control-prev h-25" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Предыдущий</span>
-        </button>
-        <button class="carousel-control-next h-25" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Следующий</span>
+        <!-- изменения кнопка саппорт -->
+        <button class="btn_support" data-toggle-text="Close">
+            <svg role="presentation" class="icon_show" style="fill:#ffffff;" width="28px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.6 17.5">
+                <path d="M3.7 17.5v-4.8H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0h14.6c1.1 0 2 .9 2 2v8.8c0 1.1-.9 2-2 2H9l-5.3 4.7zM2 1c-.6 0-1 .4-1 1v8.8c0 .5.4 1 1 1h2.8v3.5l3.8-3.5h8c.5 0 1-.4 1-1V2c0-.5-.4-1-1-1H2z"></path>
+            </svg>
+            <svg role="presentation" class="icon_close unvis" style="visibility: none;" width="16px" height="16px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                    <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                    <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) " x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                </g>
+            </svg>
         </button>
     </div>
-    <!--Карусель на все видео с ютуба-->
+
+    <div class="fun-sut-page">
+        <h4>Прекрасная новость для всех любознательных, эрудитов и тех, кому просто интересно жить!</h4>
+        <p class="main-info">
+            В РХТУ им. Д.И. Менделеева начал свою работу Профессиональный клуб «Нескучная суббота», созданный под эгидой Ассоциации выпускников университета «Менделеевцы».
+            У Вас есть замечательная возможность узнать много нового из лекций известных ученых и экспертов в различных областях науки и знаний. Заседания клуба проходят каждую субботу в онлайн-формате. Чтобы послушать лекцию или посмотреть видео прошлых лекций достаточно зарегистрироваться на сайте Ассоциации выпускников «Менделеевцы».
+            Приглашаем всех желающих принять участие в заседаниях клуба, послушать интересные лекции и подискутировать!
+        </p>
+
+
+        <h1>АНОНСЫ</h1>
+        @if (Model.News.Count() != 0)
+        {
+            <div class="news owl-carousel">
+                @foreach (News obj in Model.News)
+                {
+                        <div class='news-block item'>
+                            <img src="@obj.Photo" alt="">
+                            <h2>@obj.Title</h2>
+                            <p class="info">@obj.BriefDescription</p>
+                            <p class="date">@obj.Created.ToString("dd/MM/yyyy")</p>
+                        </div>
+                }
+            </div>
+            <div id="overlay"></div>
+            <a onclick="openRegForm()" class="fun-reg-btn btn btn-primary">Регистрация</a>
+        }
+
+        <h1>Лекции</h1>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <iframe src="https://www.youtube.com/embed/4q9YVjwgjPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/iqk0YkW-F8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/pyU_Qm9i9gg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-item">
+                    <iframe src="https://www.youtube.com/embed/MuRwDHKGx7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <button class="carousel-control-prev h-25" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+            </button>
+            <button class="carousel-control-next h-25" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+            </button>
+        </div>
+        <!--Карусель на все видео с ютуба-->
+    </div>
 </div>
