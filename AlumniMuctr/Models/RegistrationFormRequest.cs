@@ -8,12 +8,9 @@ namespace AlumniMuctr.Models
         public Guid Id { get; set; }
         public string FCs { get; set; }
         public string FCsгUniversity { get; set; }
-        public string Gender { get; set; } 
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public string? Faculty { get; set; }
-        public string? ScientificSupervisor { get; set; }
         public int EndUniversityTime { get; set; }
-        public string? CurrentLivingPlace { get; set; }
         public string? CurrentWorkingPlace { get; set; }
         public string? CurrentPosition { get; set; }
         public string? SignificantAchievements { get; set; }
@@ -21,7 +18,7 @@ namespace AlumniMuctr.Models
         public string? Hobby { get; set; }
         public IFormFile? Photo { get; set; }
         public string? PhotoUrl { get; set; }
-        public string? Email { get; set; }
+        public string Email { get; set; }
         public string? Phone { get; set; }
         public bool Subscription { get; set; }
         public bool LiveOfAssociation { get; set; }
@@ -39,12 +36,9 @@ namespace AlumniMuctr.Models
             Id = request.Id;
             FCs = request.FCs;
             FCsгUniversity = request.FCsгUniversity;
-            Gender = request.Gender;
             Birthday = request.Birthday;
             Faculty = request.Faculty;
-            ScientificSupervisor = request.ScientificSupervisor;
             EndUniversityTime = request.EndUniversityTime.Year;
-            CurrentLivingPlace = request.CurrentLivingPlace;
             CurrentWorkingPlace = request.CurrentWorkingPlace;
             CurrentPosition = request.CurrentPosition;
             SignificantAchievements = request.SignificantAchievements;

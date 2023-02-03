@@ -23,12 +23,6 @@ namespace AlumniMuctr.Services.DbTriggers
             {
                 email.Body = "Поздравляем! Ваша заявка была одобрена!";
             }
-            else if (context.ChangeType == ChangeType.Added)
-            {
-                email.Body = "Ваша заявка принята, заполните дополнитительные данные по ссылке ниже. Это ускорит одобрение вашего профиля." +
-                    $"</br> <a href=\"https://localhost:7282/FullRegistration/{context.Entity.Id}\"";
-
-            }
             else if (context.ChangeType == ChangeType.Modified)
             {
                 email.Body = "Личные данные были успешно изменены.";

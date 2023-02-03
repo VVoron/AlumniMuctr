@@ -128,17 +128,12 @@ namespace AlumniMuctr.Migrations
 
             modelBuilder.Entity("AlumniMuctr.Models.RegistrationForm", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Birthday")
+                    b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("CurrentLivingPlace")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CurrentPosition")
                         .HasColumnType("nvarchar(max)");
@@ -150,6 +145,7 @@ namespace AlumniMuctr.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndUniversityTime")
@@ -169,10 +165,6 @@ namespace AlumniMuctr.Migrations
                     b.Property<bool>("FunSaturday")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("GraduatesOfMUCTRMHTI")
                         .HasColumnType("nvarchar(max)");
 
@@ -189,9 +181,6 @@ namespace AlumniMuctr.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Photo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ScientificSupervisor")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SignificantAchievements")

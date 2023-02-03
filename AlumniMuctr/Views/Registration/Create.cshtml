@@ -38,36 +38,15 @@
         </div>
     </div>
 
-    <div class="gender-details">
-        <input asp-for="Gender" type="radio" name="gender" id="dot-1" value="Мужской">
-        <input asp-for="Gender" type="radio" name="gender" id="dot-2" value="Мужской">
-        <span class="gender-title">Пол</span>
-        <div class="category">
-            <label for="dot-1">
-                <span class="dot one"></span>
-                <span class="gender">Мужской</span>
-            </label>
-            <br />
-            <label for="dot-2">
-                <span class="dot two"></span>
-                <span class="gender">Женский</span>
-            </label>
-        </div>
-    </div>
-
     <div class="user-details">
         <div class="input-box">
             <span asp-validation-for="Birthday" class="details">Дата рождения</span>
-            <input asp-for="Birthday" name="Birthday" type="date" id="birthday-date" required>
+            <input asp-for="Birthday" name="Birthday" type="date" id="birthday-date">
         </div>
 
         <div class="input-box">
             <span asp-validation-for="Faculty" class="details">Факультет/кафедра</span>
-            <input asp-for="Faculty" name="Faculty" type="text" placeholder="ЦИТХиН" required>
-        </div>
-        <div class="input-box">
-            <span asp-validation-for="ScientificSupervisor" class="details">Научный руководитель</span>
-            <input asp-for="ScientificSupervisor" name="ScientificSupervisor" type="text" placeholder="Дударов Сергей Павлович" required>
+            <input asp-for="Faculty" name="Faculty" type="text" placeholder="ЦИТХиН">
         </div>
 
         <div class="input-box">
@@ -83,20 +62,16 @@
         </div>
 
         <div class="input-box">
-            <span asp-validation-for="CurrentLivingPlace" class="details">Место проживания в настоящее время</span>
-            <input asp-for="CurrentLivingPlace" name="CurrentLivingPlace" type="text" placeholder="Город, страна" required>
-        </div>
-        <div class="input-box">
             <span asp-validation-for="CurrentWorkingPlace" class="details">Место работы в настоящее время</span>
-            <input asp-for="CurrentWorkingPlace" name="CurrentWorkingPlace" type="text" placeholder="РХТУ" required>
+            <input asp-for="CurrentWorkingPlace" name="CurrentWorkingPlace" type="text" placeholder="РХТУ">
         </div>
         <div class="input-box">
             <span asp-validation-for="CurrentPosition" class="details">Занимаемая должность</span>
-            <input asp-for="CurrentPosition" name="CurrentPosition" type="text" placeholder="Директор" required>
+            <input asp-for="CurrentPosition" name="CurrentPosition" type="text" placeholder="Директор">
         </div>
         <div class="input-box">
             <span asp-validation-for="SignificantAchievements" class="details">Значимые научные/профессиональные достижения</span>
-            <textarea asp-for="SignificantAchievements" name="SignificantAchievements" type="text" rows="6" placeholder="Развернутый ответ" required></textarea>
+            <textarea asp-for="SignificantAchievements" name="SignificantAchievements" type="text" rows="6" placeholder="Развернутый ответ"></textarea>
         </div>
 
         <div class="input-box">
@@ -105,13 +80,13 @@
                 <option value="Нет">Нет</option>
                 <option value="Родители">Родители</option>
                 <option value="Дети">Дети</option>
-                <option value="Другое">Другое</option>
+                <option value="Другое">Родственники</option>
             </select>
         </div>
 
         <div class="input-box">
             <span asp-validation-for="Hobby" class="details">Хобби, увлечения</span>
-            <input asp-for="Hobby" name="Hobby" type="text" placeholder="Баскетбол" required>
+            <input asp-for="Hobby" name="Hobby" type="text" placeholder="Баскетбол">
         </div>
 
         <div class="file-button">
@@ -127,7 +102,7 @@
         </div>
         <div class="input-box">
             <span asp-validation-for="Phone" class="details">Контактный телефон</span>
-            <input asp-for="Phone" name="Phone" type="tel" placeholder="+7 (999) 999-99-99" required>
+            <input asp-for="Phone" name="Phone" type="tel" placeholder="+7 (999) 999-99-99">
         </div>
 
     </div>
@@ -146,11 +121,6 @@
         <div class="check-box">
             <input asp-for="FunSaturday" name="FunSaturday" type="checkbox" id="saturday" value="true">
             <label for="saturday">Хочу выступить на "Нескучной субботе"</label>
-        </div>
-
-        <div class="check-box">
-            <input asp-for="DataProcessing" name="DataProcessing" type="checkbox" id="personal-data" value="true">
-            <label for="personal-data">Согласие на обработку персональных данных</label>
         </div>
     </div>
 

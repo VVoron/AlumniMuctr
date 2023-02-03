@@ -11,68 +11,6 @@
         <hr />
     </div>
 
-    <div class="user-details">
-        <div class="input-box">
-            <span asp-validation-for="FCs" class="details">Фамилия Имя Отчество</span>
-            <input asp-for="FCs" name="Fcs" placeholder="Иванов Иван Иванович" required>
-        </div>
-    </div>
-
-    <div class="user-details">
-        <div class="input-box">
-            <span asp-validation-for="FCsгUniversity" class="details">ФИО в период обучения</span>
-            <input asp-for="FCsгUniversity" name="FCsгUniversity" type="text" placeholder="Иванов Иван Иванович" required>
-        </div>
-    </div>
-
-    <div class="gender-details">
-        <input asp-for="Gender" type="radio" name="gender" id="dot-1" value="Мужской">
-        <input asp-for="Gender" type="radio" name="gender" id="dot-2" value="Мужской">
-        <span class="gender-title">Пол</span>
-        <div class="category">
-            <label for="dot-1">
-                <span class="dot one"></span>
-                <span class="gender">Мужской</span>
-            </label>
-            <br />
-            <label for="dot-2">
-                <span class="dot two"></span>
-                <span class="gender">Женский</span>
-            </label>
-        </div>
-    </div>
-
-    <div class="user-details">
-        <div class="input-box">
-            <span asp-validation-for="Birthday" class="details">Дата рождения</span>
-            <input asp-for="Birthday" name="Birthday" type="date" id="birthday-date" required>
-        </div>
-
-        <div class="input-box">
-            <span asp-validation-for="Faculty" class="details">Факультет/кафедра</span>
-            <input asp-for="Faculty" name="Faculty" type="text" placeholder="ЦИТХиН" required>
-        </div>
-        <div class="input-box">
-            <span asp-validation-for="ScientificSupervisor" class="details">Научный руководитель</span>
-            <input asp-for="ScientificSupervisor" name="ScientificSupervisor" type="text" placeholder="Дударов Сергей Павлович" required>
-        </div>
-
-        <div class="input-box">
-            <span asp-validation-for="EndUniversityTime" class="details">Год окончания университета</span>
-            <select asp-for="EndUniversityTime" class="family-select" name="EndUniversityTime" id="ending-year" required>
-                @{
-                    for (int year = DateTime.Now.Year; year >= 1920; year--)
-                    {
-                        <option value=@year>@year</option>
-                    }
-                }
-            </select>
-        </div>
-
-        <div class="input-box">
-            <span asp-validation-for="CurrentLivingPlace" class="details">Место проживания в настоящее время</span>
-            <input asp-for="CurrentLivingPlace" name="CurrentLivingPlace" type="text" placeholder="Город, страна" required>
-        </div>
         <div class="input-box">
             <span asp-validation-for="CurrentWorkingPlace" class="details">Место работы в настоящее время</span>
             <input asp-for="CurrentWorkingPlace" name="CurrentWorkingPlace" type="text" placeholder="РХТУ" required>
@@ -102,7 +40,7 @@
         </div>
 
         <div class="file-button">
-            <span asp-validation-for="Photo" class="details">Загрузите Ваше выпускное фото или актуальное фото (при желании)</span>
+            <span asp-validation-for="Photo" class="details">Загрузите Ваше выпускное фото (при желании)</span>
             <br>
             <label for="upload-file">Загрузить файл</label>
             <input asp-for="Photo" name="Photo" type="file" id="upload-file">
@@ -133,11 +71,6 @@
         <div class="check-box">
             <input asp-for="FunSaturday" name="FunSaturday" type="checkbox" id="saturday" value="true">
             <label for="saturday">Хочу выступить на "Нескучной субботе"</label>
-        </div>
-
-        <div class="check-box">
-            <input asp-for="DataProcessing" name="DataProcessing" type="checkbox" id="personal-data" value="true">
-            <label for="personal-data">Согласие на обработку персональных данных</label>
         </div>
     </div>
 

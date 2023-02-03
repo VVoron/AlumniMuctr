@@ -75,7 +75,7 @@
 
 <!-- Registration form -->
 <div class="reg-form" >
-    <div class="reg-container" style="min-height: 500px; margin-top: 15rem">
+    <div class="reg-container" style="">
         <a id="close-btn" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
                 <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
@@ -86,64 +86,94 @@
 
             <div class="user-details">
                 <div class="input-box">
-                    <span asp-validation-for="Human.FCs" class="details">Фамилия Имя Отчество</span>
+                    <span asp-validation-for="Human.FCs" class="details">Фамилия Имя Отчество (*Обязательно)</span>
                     <input asp-for="Human.FCs" name="Fcs" placeholder="Иванов Иван Иванович" required>
                 </div>
             </div>
             <div class="user-details">
 
                 <div class="input-box">
-                    <span asp-validation-for="Human.FCsгUniversity" class="details">ФИО в период обучения</span>
+                    <span asp-validation-for="Human.FCsгUniversity" class="details">ФИО в период обучения (*Обязательно)</span>
                     <input asp-for="Human.FCsгUniversity" name="FCsгUniversity" type="text" placeholder="Иванов Иван Иванович" required>
-                </div>
-            </div>
-
-            <div class="gender-details">
-                <input asp-for="Human.Gender" type="radio" name="gender" id="dot-1" value="Мужской">
-                <input asp-for="Human.Gender" type="radio" name="gender" id="dot-2" value="Мужской">
-                <span class="gender-title">Пол</span>
-                <div class="category">
-                    <label for="dot-1">
-                        <span class="dot one"></span>
-                        <span class="gender">Мужской</span>
-                    </label>
-                    <br />
-                    <label for="dot-2">
-                        <span class="dot two"></span>
-                        <span class="gender">Женский</span>
-                    </label>
                 </div>
             </div>
 
             <div class="user-details">
                 <div class="input-box">
                     <span asp-validation-for="Human.Birthday" class="details">Дата рождения</span>
-                    <input asp-for="Human.Birthday" name="Birthday" type="date" id="birthday-date" required>
+                    <input asp-for="Human.Birthday" name="Birthday" type="date" id="birthday-date">
                 </div>
 
                 <div class="input-box">
-                    <span asp-validation-for="Human.EndUniversityTime" class="details">Год окончания университета</span>
-                    <select asp-for="Human.EndUniversityTime" class="family-select" name="EndUniversityTime" id="ending-year" required>
-                        @{
-                            for (int year = DateTime.Now.Year; year >=1920 ; year--)
-                            {
-                                            <option value=@year>@year</option>
-                            }
-                        }
+                    <span asp-validation-for="Human.Faculty" class="details">Факультет/кафедра</span>
+                    <input asp-for="Human.Faculty" name="Faculty" type="text" placeholder="ЦИТХиН">
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.EndUniversityTime" class="details">Год окончания университета (*Обязательно)</span>
+                    <input asp-for="Human.EndUniversityTime" name="EndUniversityTime" type="number" min="1920" max="@DateTime.Now.Year" style="max-width: 150px" SIZE required />
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.CurrentWorkingPlace" class="details">Место работы в настоящее время</span>
+                    <input asp-for="Human.CurrentWorkingPlace" name="CurrentWorkingPlace" type="text" placeholder="РХТУ">
+                </div>
+                <div class="input-box">
+                    <span asp-validation-for="Human.CurrentPosition" class="details">Занимаемая должность</span>
+                    <input asp-for="Human.CurrentPosition" name="CurrentPosition" type="text" placeholder="Директор">
+                </div>
+                <div class="input-box">
+                    <span asp-validation-for="Human.SignificantAchievements" class="details">Значимые научные/профессиональные достижения</span>
+                    <textarea asp-for="Human.SignificantAchievements" name="SignificantAchievements" type="text" rows="6" placeholder="Развернутый ответ"></textarea>
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.GraduatesOfMUCTRMHTI" class="details">Есть ли в Вашей семье выпускники РХТУ - МХТИ?</span>
+                    <select asp-for="Human.GraduatesOfMUCTRMHTI" name="GraduatesOfMUCTRMHTI" class="family-select">
+                        <option value="Нет">Нет</option>
+                        <option value="Родители">Родители</option>
+                        <option value="Дети">Дети</option>
+                        <option value="Другое">Родственники</option>
                     </select>
                 </div>
 
                 <div class="input-box">
-                    <span asp-validation-for="Human.Email" class="details">Адресс электронной почты</span>
+                    <span asp-validation-for="Human.Hobby" class="details">Хобби, увлечения</span>
+                    <input asp-for="Human.Hobby" name="Hobby" type="text" placeholder="Баскетбол">
+                </div>
+
+                <div class="file-button">
+                    <span asp-validation-for="Human.Photo" class="details">Загрузите Ваше выпускное фото (при желании)</span>
+                    <br>
+                    <label for="upload-file">Загрузить файл</label>
+                    <input asp-for="Human.Photo" name="Photo" type="file" id="upload-file">
+                </div>
+
+                <div class="input-box">
+                    <span asp-validation-for="Human.Email" class="details">Адресс электронной почты (*Обязательно)</span>
                     <input asp-for="Human.Email" name="Email" type="email" placeholder="example@muctr.ru" required>
                 </div>
 
+                <div class="input-box">
+                    <span asp-validation-for="Human.Phone" class="details">Контактный телефон</span>
+                    <input asp-for="Human.Phone" name="Phone" type="tel" placeholder="+7 (999) 999-99-99">
+                </div>
             </div>
 
             <div class="reg-checkboxes">
                 <div class="check-box">
-                    <input asp-for="Human.Subscription" name="Subscription" type="checkbox" id="mailing">
+                    <input asp-for="Human.Subscription" name="Subscription" type="checkbox" id="mailing" checked>
                     <label for="mailing">Подписаться на рассылку новостной информации</label>
+                </div>
+
+                <div class="check-box">
+                    <input asp-for="Human.LiveOfAssociation" name="LiveOfAssociation" type="checkbox" id="activist" value="true">
+                    <label for="activist">Хочу активно участвовать в жизни ассоциации</label>
+                </div>
+
+                <div class="check-box">
+                    <input asp-for="Human.FunSaturday" name="FunSaturday" type="checkbox" id="saturday" value="true">
+                    <label for="saturday">Хочу выступать на "Нескучной субботе"</label>
                 </div>
 
                 <div class="check-box">

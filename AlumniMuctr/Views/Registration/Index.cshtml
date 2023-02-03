@@ -47,16 +47,12 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Все заполнено</th>
                 <th>Верифицирован</th>
                 <th>ФИО</th>
                 <th>ФИО в период обучения </th>
-                <th>Пол</th>
                 <th>Дата рождения</th>
                 <th>Факультет/кафедра</th>
-                <th>Научный руководитель</th>
                 <th>Год окончания университета</th>
-                <th>Место проживания в настоящее время</th>
                 <th>Место работы в настоящее время</th>
                 <th>Занимаемая должность</th>
                 <th>Значимые научные/профессиональные достижения</th>
@@ -75,19 +71,6 @@
             @foreach (var obj in Model)
             {
                 <tr>
-                    <td style="text-align:center">
-                        @if(!RegistrationForm.IsAnyNullOrEmpty(obj)){
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                            </svg>
-                        }
-                        else
-                        {
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                            </svg>
-                        }
-                    </td>
                     <td style="text-align:center">
                         @if (obj.IsVerified)
                         {
@@ -111,46 +94,37 @@
                        @obj.FCsгUniversity
                     </td>
                     <td>
-                        @obj.Gender
+                        @(obj.Birthday == null ? "Не указано" : ((DateTime)obj.Birthday).ToString("dd/MM/yyyy"))
                     </td>
                     <td>
-                        @obj.Birthday.ToString("dd/MM/yyyy")
-                    </td>
-                    <td>
-                        @obj.Faculty
-                    </td>
-                    <td width="400">
-                        @obj.ScientificSupervisor
+                        @(obj.Faculty == null ? "Не указано" : obj.Faculty)
                     </td>
                     <td>
                         @obj.EndUniversityTime.ToString("yyyy")
                     </td>
                     <td>
-                        @obj.CurrentLivingPlace
+                        @(obj.CurrentWorkingPlace == null ? "Не указано" : obj.CurrentWorkingPlace)
                     </td>
                     <td>
-                        @obj.CurrentWorkingPlace
+                        @(obj.CurrentPosition == null ? "Не указано" : obj.CurrentPosition)
                     </td>
                     <td>
-                        @obj.CurrentPosition
+                        @(obj.SignificantAchievements == null ? "Не указано" : obj.SignificantAchievements)
                     </td>
                     <td>
-                        @obj.SignificantAchievements
+                        @(obj.GraduatesOfMUCTRMHTI == null ? "Не указано" : obj.GraduatesOfMUCTRMHTI)
                     </td>
                     <td>
-                        @obj.GraduatesOfMUCTRMHTI
+                        @(obj.Hobby == null ? "Не указано" : obj.Hobby)
                     </td>
                     <td>
-                        @obj.Hobby
-                    </td>
-                    <td>
-                        <img class="news-photo-crop" src="@obj.Photo" \>
+                        @(!String.IsNullOrEmpty(obj.Photo) ? Html.Raw($"<img class='news-photo-crop' src = \"{obj.Photo}\" \\>") : "Отсутствует")
                     </td>
                     <td>
                         @obj.Email
                     </td>
                     <td>
-                        @obj.Phone
+                        @(obj.Phone == null ? "Не указано" : obj.Phone)
                     </td>
                     <td>
                         @(obj.Subscription ? "Да" : "Нет")

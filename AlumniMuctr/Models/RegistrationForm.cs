@@ -10,19 +10,16 @@ namespace AlumniMuctr.Models
         public Guid Id { get; set; } 
         public string FCs { get; set; }
         public string FCsгUniversity { get; set; }
-        public string Gender { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public string? Faculty { get; set; }
-        public string? ScientificSupervisor { get; set; }
         public DateTime EndUniversityTime { get; set; }
-        public string? CurrentLivingPlace { get; set; }
         public string? CurrentWorkingPlace { get; set; }
         public string? CurrentPosition { get; set; }
         public string? SignificantAchievements { get; set; }
         public string? GraduatesOfMUCTRMHTI { get; set; }
         public string? Hobby { get; set; }
         public string? Photo { get; set; }
-        public string? Email { get; set; }
+        public string Email { get; set; }
         public string? Phone { get; set; }
         public bool Subscription { get; set; } = false;
         public bool LiveOfAssociation { get; set; } = false;
@@ -41,17 +38,14 @@ namespace AlumniMuctr.Models
             Id = request.Id;
             FCs = request.FCs;
             FCsгUniversity = request.FCsгUniversity;
-            Gender = request.Gender;
             Birthday = request.Birthday;
             Faculty = request.Faculty;
-            ScientificSupervisor = request.ScientificSupervisor;
             EndUniversityTime = DateTime.ParseExact(
                     request.EndUniversityTime.ToString(),
                     "yyyy",
                     CultureInfo.InvariantCulture,
                     DateTimeStyles.None
                 );
-            CurrentLivingPlace = request.CurrentLivingPlace;
             CurrentWorkingPlace = request.CurrentWorkingPlace;
             CurrentPosition = request.CurrentPosition;
             SignificantAchievements = request.SignificantAchievements;
@@ -95,12 +89,9 @@ namespace AlumniMuctr.Models
                 Id.ToString(),
                 FCs,
                 FCsгUniversity,
-                Gender,
                 Birthday.ToString(),
                 Faculty,
-                ScientificSupervisor,
                 EndUniversityTime.ToString(),
-                CurrentLivingPlace,
                 CurrentWorkingPlace,
                 CurrentPosition,
                 SignificantAchievements,
@@ -114,11 +105,6 @@ namespace AlumniMuctr.Models
                 FunSaturday.ToString(),
                 DataProcessing.ToString()
             };
-        }
-
-        public static bool IsAnyNullOrEmpty(object obj)
-        {
-            return !obj.GetType().GetProperties().All(x => x.GetValue(obj) != null);
         }
 
         public static implicit operator RegistrationForm(RegistrationFormRequest request)
