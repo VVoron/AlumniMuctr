@@ -28,11 +28,25 @@
         <div class="col-6">
             <h2 class="text-primary">Список заявок на нескучную субботу</h2>
         </div>
+        <div class="col-6 text-end">
+            <span>Выберите интересующий вас анонс</span>
+            <select name="NewsFilter" class="family-select" onchange="filterFunSaturdayTable()">
+                <option value="Любой">
+                   Любой
+                </option>
+                @foreach (News obj in Model.News)
+                {
+                    <option value="@obj.Id">
+                        @obj.Title
+                    </option>
+                }
+            </select>
+        </div>
     </div>
     <br />
 
 
-    <table class="table table-bordered" style="width: 100%">
+    <table class="table table-bordered">
         <thead class="reg-table-head">
             <tr>
                 <th>Id</th>
@@ -51,8 +65,8 @@
                     <td>
                         @obj.Email
                     </td>
-                    <td>
-                        @Model.News[index]
+                    <td class="@Model.News[index].Id">
+                        @Model.News[index].Title
                     </td>
                     @if (obj.Status == AlumniMuctr.Enums.Status.Independent)
                     {

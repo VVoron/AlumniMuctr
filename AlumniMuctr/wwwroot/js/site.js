@@ -3,6 +3,20 @@ const imgNotChecked = document.querySelector('.icon_close');
 
 var category = 0; //0 - all, 1 - events, 2 - jobs, 3 - anouncments
 
+function filterFunSaturdayTable() {
+    var filter = document.querySelector("select").value;
+    var table = document.querySelector("table");
+    var tr = table.getElementsByTagName("tr");
+    for (var i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td.classList == filter || filter == "Любой") {
+            tr[i].classList.remove("hidden");
+        }
+        else if (!tr[i].classList.contains("hidden"))
+            tr[i].classList.add("hidden");
+    }
+}
+
 function openRegForm() {
     document.getElementById("funreg").classList.remove("hidden");
     document.getElementById("overlay").classList.add("active");

@@ -1452,3 +1452,7 @@ label.error {
     margin-top: 5%;
     width: 650px;
 }
+
+.col-6.text-end span{
+    font-size:18px;
+}
