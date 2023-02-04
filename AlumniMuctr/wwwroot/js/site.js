@@ -180,7 +180,7 @@ window.onload = function () {
             margin: 50,
             autoplay: true,
             smartSpeed: 1000,
-            autoplayTimeout: 2000,
+            autoplayTimeout: 3000,
             autoplayHoverPause: true
             });
     });
