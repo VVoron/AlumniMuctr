@@ -838,7 +838,34 @@ footer a {
     margin-top: 5%;
     width: 40%;
 }
-
+@media screen and (max-width: 1200px) {
+    .table-area-users {
+        background-color: white;
+        margin-top: 5%;
+        width: 50%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .table-area-users {
+        background-color: white;
+        margin-top: 5%;
+        width: 60%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .table-area-users {
+        background-color: white;
+        margin-top: 5%;
+        width: 70%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .table-area-users {
+        background-color: white;
+        margin-top: 5%;
+        width: 80%;
+    }
+}
 table {
     display: block;
     overflow-x: auto;
@@ -1455,4 +1482,91 @@ label.error {
 
 .col-6.text-end span{
     font-size:18px;
+}
+
+
+/* ScrollBar */
+
+/* Firefox */
+.reg-form, .news-module{
+    scrollbar-width: thin;
+    scrollbar-color: #0D6EFD #DFE9EB;
+}
+
+/* Chrome, Edge and Safari for reg-form*/
+.reg-form::-webkit-scrollbar {
+    width: 9px;
+    width: 9px;
+}
+
+.reg-form::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+}
+
+.reg-form::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+}
+
+.reg-form::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+}
+
+.reg-form::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #0D6EFD;
+}
+
+.reg-form::-webkit-scrollbar-thumb:hover {
+    background-color: #0B5FDC;
+}
+
+.reg-form::-webkit-scrollbar-thumb:active {
+    background-color: #0B5FDC;
+}
+
+/* Chrome, Edge and Safari for news-module*/
+.news-module::-webkit-scrollbar {
+    width: 9px;
+    width: 9px;
+}
+
+.news-module::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+}
+
+.news-module::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+}
+
+.news-module::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+}
+
+.news-module::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #0D6EFD;
+}
+
+.news-module::-webkit-scrollbar-thumb:hover {
+    background-color: #0B5FDC;
+}
+
+.news-module::-webkit-scrollbar-thumb:active {
+    background-color: #0B5FDC;
+}
+
+/* Tables */
+
+.table tbody tr:nth-child(odd) {
+    background: #fff;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #e5e5e5;
+}
+
+.table thead {
+    background: #87CEFA;
 }
