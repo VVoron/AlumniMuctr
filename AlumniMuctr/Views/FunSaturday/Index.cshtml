@@ -140,6 +140,21 @@
         <h1>АНОНСЫ</h1>
         @if (Model.News.Count() != 0)
         {
+
+            <section class="loader">
+
+                <div style="--i:0" class="slider">
+                </div>
+                <div style="--i:1" class="slider">
+                </div>
+                <div style="--i:2" class="slider">
+                </div>
+                <div style="--i:3" class="slider">
+                </div>
+                <div style="--i:4" class="slider">
+                </div>
+            </section>
+
             <div class="news owl-carousel">
                 @foreach (News obj in Model.News)
                 {

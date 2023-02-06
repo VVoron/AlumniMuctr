@@ -182,7 +182,8 @@ window.onload = function () {
             smartSpeed: 1000,
             autoplayTimeout: 3000,
             autoplayHoverPause: true
-            });
+        });
+        document.querySelector(".loader").classList.add("hidden");
     });
 
     var $button = document.querySelector('.btn_support'),
