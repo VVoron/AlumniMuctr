@@ -629,53 +629,43 @@ nav a:hover {
 }
 
 .programms .blocks {
-    max-width: 600px;
+    max-width: 500px;
     margin: 4rem auto;
-    counter-reset: li;
     list-style: none;
-    padding: 10px;
+    padding-left: 100px;
 }
 
 .blocks li.in-block {
     position: relative;
     margin: 0 0 10px 2em;
     padding: 4px 8px;
-    border-top: 2px solid #3973e9;
+    border-top: 3px solid #3973e9;
     transition: .3s linear;
+    min-height: 200px;
+}
+
+.blocks li.in-block:hover {
+    border-top: 3px solid #389fe8;
+}
+
+.blocks li.in-block:hover img {
+    border: 3px solid #389fe8;
 }
 
 .blocks li.in-block:last-child {
     margin-bottom: 0;
 }
 
-.blocks li.in-block:before {
-    content: counter(li);
-    counter-increment: li;
+.programms img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
     position: absolute;
-    top: -2px;
-    left: -2em;
-    width: 2em;
-    box-sizing: border-box;
-    margin-right: 8px;
-    padding: 4px;
-    border-top: 2px solid #3973e9;
-    border-left: 2px solid transparent;
-    border-right: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    background: #3973e9;
-    color: white;
-    font-weight: bold;
-    text-align: center;
+    left: -200px;
+    border: 3px solid #3973e9;
+    top: -3px;
+    z-index: 1;
     transition: .3s linear;
-}
-
-.blocks li.in-block:hover {
-    border-top: 2px solid #3973e9;
-}
-
-.blocks li.in-block:hover:before {
-    border: 2px solid #3973e9;
-    background: #3397e9;
 }
 
 .programms h2 {
@@ -1370,6 +1360,7 @@ label.error {
 
 #overlay2.active {
     opacity: 1;
+    z-index: 12;
     pointer-events: none;
 }
 /*End of News module*/
@@ -1615,4 +1606,14 @@ label.error {
 
 .table thead {
     background: #87CEFA;
+}
+
+.btn-for-add {
+    background-color: #096cf7cc;
+    margin: -20px 2px 15px 2px;
+    color: #fff;
+}
+
+.btn-for-add:hover {
+    color: #fff;
 }

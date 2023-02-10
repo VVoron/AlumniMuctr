@@ -297,12 +297,13 @@
         <h1>Программы</h1>
         <div class="justify-content-center">
 
-                <ol class="blocks">
-                <div id="overlay2"></div>
+                <ul class="blocks">
+                    <div id="overlay2"></div>
 
                     @foreach (Programms obj in Model.AllProgramms)
                     {
                     <li class="in-block pointer-cursor" onclick="showProgramm(this)">
+                            <img src="@obj.Photo" />
                             <h2>@obj.Title</h2>
                             <p class="info">
                                 @Html.Raw(obj.BriefDescription)
@@ -326,7 +327,7 @@
                         </div>
                     </div>
                     }
-                </ol>
+                </ul>
         </div>
     </div>
 

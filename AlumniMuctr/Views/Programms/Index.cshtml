@@ -43,6 +43,7 @@
                 <th>Заголовок</th>
                 <th>Краткое содержание</th>
                 <th>Cодержание</th>
+                <th>Фото</th>
             </tr>
         </thead>
         <tbody>
@@ -54,6 +55,12 @@
                     </td>
                     <td class="w-75">
                         @obj.BriefDescription
+                    </td>
+                    <td>
+                        @obj.Description
+                    </td>
+                    <td>
+                        <img class="news-photo-crop" src="@obj.Photo" \>
                     </td>
 
                     <td width="20%">

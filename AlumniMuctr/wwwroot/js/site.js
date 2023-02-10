@@ -3,6 +3,20 @@ const imgNotChecked = document.querySelector('.icon_close');
 
 var category = 0; //0 - all, 1 - events, 2 - jobs, 3 - anouncments
 
+function AddTag(tag) {
+    var input = document.getElementById("for-add");
+    if (tag == "strong")
+        input.value += "<strong>Текст</strong>";
+    else if (tag == "curs")
+        input.value += "<i>Текст</i>";
+    else if (tag == "br")
+        input.value += "<br>";
+    else if (tag == "href")
+        input.value += '<a href="Ссылка">Текст</a>';
+    else if (tag == "img")
+        input.value += '<img width="Ширина" height="Высота" src="Ссылка" />';
+}
+
 function filterFunSaturdayTable() {
     var filter = document.querySelector("select").value;
     var table = document.querySelector("table");
