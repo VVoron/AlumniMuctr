@@ -629,10 +629,10 @@ nav a:hover {
 }
 
 .programms .blocks {
-    max-width: 500px;
+    max-width: 70%;
     margin: 4rem auto;
     list-style: none;
-    padding-left: 100px;
+    padding-left: 20%;
 }
 
 .blocks li.in-block {
