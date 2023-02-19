@@ -1,6 +1,7 @@
 ﻿using AlumniMuctr.Models;
 using AlumniMuctr.Services.EmailService;
 using EntityFrameworkCore.Triggered;
+using System.IO;
 
 namespace AlumniMuctr.Services.DbTriggers
 {
@@ -19,9 +20,9 @@ namespace AlumniMuctr.Services.DbTriggers
             email.To = context.Entity.Email;
             email.Subject = "Заявка на регистрацию в Ассоциации Выпускников РХТУ";
 
-            if (context.Entity.IsVerified)
+            if (context.ChangeType == ChangeType.Added)
             {
-                email.Body = "Поздравляем! Ваша заявка была одобрена!";
+                email.Body = File.ReadAllText(@"../AlumniMuctr/EmailTemplates/WelcomeTemplate.html");
             }
             else if (context.ChangeType == ChangeType.Modified)
             {
