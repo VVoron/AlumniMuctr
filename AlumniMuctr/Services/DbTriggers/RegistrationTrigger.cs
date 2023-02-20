@@ -22,7 +22,7 @@ namespace AlumniMuctr.Services.DbTriggers
 
             if (context.ChangeType == ChangeType.Added)
             {
-                email.Body = File.ReadAllText(@"../AlumniMuctr/EmailTemplates/WelcomeTemplate.html");
+                email.Body = File.ReadAllText(@"../AlumniMuctr/EmailTemplates/WelcomeTemplate.html").Replace("{fullname}", context.Entity.FCs);
             }
             else if (context.ChangeType == ChangeType.Modified)
             {
