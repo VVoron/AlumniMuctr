@@ -1,4 +1,4 @@
-﻿@model Programms
+﻿@model ProgrammsRequest
 
 <div id="menuToggle">
     <input type="checkbox" />
@@ -39,9 +39,30 @@
 
         <div class="input-box">
             <span asp-validation-for="Description" class="details">Содержание</span>
-            <textarea asp-for="Description" class="description-textarea" name="Description" type="text" required></textarea>
+            <textarea id="for-add" asp-for="Description" class="description-textarea" name="Description" type="text" required></textarea>
         </div>
 
+        <div class="nav">
+            <a class="btn btn-for-add" onclick="AddTag('strong')">Жирный шрифт</a>
+            <a class="btn btn-for-add" onclick="AddTag('curs')">Курсив</a>
+            <a class="btn btn-for-add" onclick="AddTag('br')">Перенос строки</a>
+            <a class="btn btn-for-add" onclick="AddTag('href')">Гиперссылка</a>
+            <a class="btn btn-for-add" onclick="AddTag('img')">Фото</a>
+        </div>
+
+        <div class="file-button">
+            <span asp-validation-for="Photo" class="details">Загрузите Ваше выпускное фото или актуальное фото (при желании)</span>
+            <br>
+            <label for="upload-file">Загрузить файл</label>
+            <input asp-for="Photo" name="Photo" type="file" id="upload-file">
+        </div>
+
+        <div class="user-details">
+            <div class="input-box">
+                <span asp-validation-for="PhotoUrl" class="details">Или ссылка на фото</span>
+                <input asp-for="PhotoUrl" name="PhotoUrl" placeholder="example.com/photo1.png" required>
+            </div>
+        </div>
     </div>
 
     <button type="submit" class="btn btn-primary" style="width:200px">Обновить</button>

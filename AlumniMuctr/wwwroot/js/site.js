@@ -29,6 +29,20 @@ const imgNotChecked = document.querySelector('.icon_close');
 
 var category = 0; //0 - all, 1 - events, 2 - jobs, 3 - anouncments
 
+function AddTag(tag) {
+    var input = document.getElementById("for-add");
+    if (tag == "strong")
+        input.value += "<strong>Текст</strong>";
+    else if (tag == "curs")
+        input.value += "<i>Текст</i>";
+    else if (tag == "br")
+        input.value += "<br>";
+    else if (tag == "href")
+        input.value += '<a href="Ссылка">Текст</a>';
+    else if (tag == "img")
+        input.value += '<img width="Ширина" height="Высота" src="Ссылка" />';
+}
+
 function filterFunSaturdayTable() {
     var filter = document.querySelector("select").value;
     var table = document.querySelector("table");
@@ -66,7 +80,8 @@ function filterRegs(filter) {
         if (!element.classList.contains("hidden"))
             element.classList.add("hidden")
     });
-    document.querySelector(".btn." + filter).classList.remove("hidden");
+    if (document.querySelector(".btn." + filter) != null)
+        document.querySelector(".btn." + filter).classList.remove("hidden");
 
     var table = document.querySelector("table");
     var tr = table.getElementsByTagName("tr");
@@ -77,6 +92,10 @@ function filterRegs(filter) {
                 tr[i].classList.add("hidden");
         } else if (td.className == "true" && filter == "not-verify") {
             if (!tr[i].classList.contains("hidden"))
+                tr[i].classList.add("hidden");
+        } else if (filter == "duplicates") {
+            var tdNew = tr[i].getElementsByTagName("td")[1];
+            if (tdNew.innerText.indexOf("дубликат") == -1 && !tr[i].classList.contains("hidden"))
                 tr[i].classList.add("hidden");
         } else {
             tr[i].classList.remove("hidden");

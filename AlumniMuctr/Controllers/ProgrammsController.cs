@@ -1,28 +1,31 @@
 ﻿using AlumniMuctr.Data;
 using AlumniMuctr.Models;
+using AlumniMuctr.Services.SaveFileService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlumniMuctr.Controllers
 {
+    [Authorize]
     public class ProgrammsController : Controller
     {
         private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _appEnvironment;
+        private readonly ISaveFileService _saveFile;
 
-        public ProgrammsController(ApplicationDbContext db, IWebHostEnvironment appEnvironment)
+        public ProgrammsController(ApplicationDbContext db, IWebHostEnvironment appEnvironment, ISaveFileService saveFile)
         {
             _db = db;
             _appEnvironment = appEnvironment;
+            _saveFile = saveFile;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             IEnumerable<Programms> dbList = _db.Programms;
             return View(dbList);
         }
-        [Authorize]
+
         public IActionResult Create()
         {
             return View();
@@ -30,17 +33,23 @@ namespace AlumniMuctr.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Programms obj)
+        public async Task<IActionResult> Create(ProgrammsRequest obj)
         {
-            if (!ModelState.IsValid)
-                return View(obj);
+            if (ModelState.IsValid)
+            {
+                if (obj.Photo != null)
+                {
+                    string path = "/media/Programs/";
+                    obj.PhotoUrl = await _saveFile.SaveFile(_appEnvironment.WebRootPath, path, obj.Photo);
+                }
 
-            _db.Programms.Add(obj);
-            _db.SaveChanges();
-            TempData["success"] = "Программа успешно создана";
-            return RedirectToAction("Index");
+                _db.Programms.Add(obj);
+                _db.SaveChanges();
+                TempData["success"] = "Программа успешно создана";
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
-        [Authorize]
 
         public IActionResult Edit(int? id)
         {
@@ -55,22 +64,29 @@ namespace AlumniMuctr.Controllers
                 return NotFound();
             }
 
-            return View(objFromDb);
+            return View(new ProgrammsRequest(objFromDb));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Programms obj)
+        public async Task<IActionResult> Edit(ProgrammsRequest obj)
         {
-            if (!ModelState.IsValid)
-                return View(obj);
+            if (ModelState.IsValid)
+            {
+                if (obj.Photo != null)
+                {
+                    string path = "/media/Programs/";
+                    obj.PhotoUrl = await _saveFile.SaveFile(_appEnvironment.WebRootPath, path, obj.Photo);
+                }
 
-            _db.Update(obj);
-            _db.SaveChanges();
-            TempData["success"] = "Программа успешно изменена";
-            return RedirectToAction("Index");
+                _db.Programms.Update(obj);
+                _db.SaveChanges();
+                TempData["success"] = "Программа успешно изменена";
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
-        [Authorize]
+
         public IActionResult Delete(int? id)
         {
             var obj = _db.Programms.Find(id);
