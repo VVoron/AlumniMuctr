@@ -4,43 +4,46 @@
 }
 
 <partial name="_Notifications" />
-<form method="post" asp-action="Registration" id="funreg" class="hidden">
-    <h1>Нескучная суббота</h1>
-    <p>Зарегестрируйтесь для получения информации о проведении встреч клуба!</p>
-    <div class="input-box">
-        <span asp-validation-for="FunSaturdayReg.NewsId">Выберите интересующий вас анонс</span>
-        <select asp-for="FunSaturdayReg.NewsId" name="NewsId" class="family-select">
-            @foreach (News obj in Model.News)
-            {
-                <option value="@obj.Id">
-                    @(obj.StartTime != null ? Convert.ToDateTime(obj.StartTime).ToString("dd/MM/yyyy") + " - " : "")@obj.Title
-                </option>
-            }
-        </select>
-    </div>
-    <div class="input-box">
-        <span>Укажите свой статус</span>
-        <br>
-        <input asp-for="FunSaturdayReg.Status" type="radio"
-               name="Status" value="0" id="status1">
-        <label for="status1">Выпускник</label>
-        <br>
-        <input asp-for="FunSaturdayReg.Status" type="radio" id="status2"
-               name="Status" value="1">
-        <label for="status2">Студент</label>
-        <br>
-        <input asp-for="FunSaturdayReg.Status" type="radio" id="status3"
-               name="Status" value="2">
-        <label for="status3">Сторонний слушатель</label>
-    </div>
-    <div class="user-details">
+<div class="background" data-modal-window="modal_reg_anon">
+    <form method="post" asp-action="Registration" id="funreg">
+        <h1>Нескучная суббота</h1>
+        <p>Зарегестрируйтесь для получения информации о проведении встреч клуба!</p>
         <div class="input-box">
-            <span asp-validation-for="FunSaturdayReg.Email">Email</span>
-            <input asp-for="FunSaturdayReg.Email" name="Email" placeholder="example@muctr.ru" required>
+            <span asp-validation-for="FunSaturdayReg.NewsId">Выберите интересующий вас анонс</span>
+            <select asp-for="FunSaturdayReg.NewsId" name="NewsId" class="family-select">
+                @foreach (News obj in Model.News)
+                {
+                    <option value="@obj.Id">
+                        @(obj.StartTime != null ? Convert.ToDateTime(obj.StartTime).ToString("dd/MM/yyyy") + " - " : "")@obj.Title
+                    </option>
+                }
+            </select>
         </div>
-    </div>
-    <input type="submit" class="btn btn-primary" value="Записаться" />
-</form>
+        <div class="input-box">
+            <span>Укажите свой статус</span>
+            <br>
+            <input asp-for="FunSaturdayReg.Status" type="radio"
+                   name="Status" value="0" id="status1">
+            <label for="status1">Выпускник</label>
+            <br>
+            <input asp-for="FunSaturdayReg.Status" type="radio" id="status2"
+                   name="Status" value="1">
+            <label for="status2">Студент</label>
+            <br>
+            <input asp-for="FunSaturdayReg.Status" type="radio" id="status3"
+                   name="Status" value="2">
+            <label for="status3">Сторонний слушатель</label>
+        </div>
+        <div class="user-details">
+            <div class="input-box">
+                <span asp-validation-for="FunSaturdayReg.Email">Email</span>
+                <input asp-for="FunSaturdayReg.Email" name="Email" placeholder="example@muctr.ru" required>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Записаться" />
+    </form>
+</div>>
+
 
 <div id="back">
     <!--Top Right Menu-->
@@ -167,7 +170,7 @@
                 }
             </div>
             <div id="overlay"></div>
-            <a onclick="openRegForm()" class="fun-reg-btn btn btn-primary">Регистрация</a>
+            <a class="fun-reg-btn btn btn-primary" data-modal-btn="modal_reg_anon">Регистрация</a>
         }
 
         <h1>Лекции</h1>

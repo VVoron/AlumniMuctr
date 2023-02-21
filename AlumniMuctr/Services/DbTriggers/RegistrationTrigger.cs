@@ -18,7 +18,12 @@ namespace AlumniMuctr.Services.DbTriggers
             var email = new Email();
             email.To = context.Entity.Email;
             email.Subject = "Заявка на регистрацию в Ассоциации Выпускников РХТУ";
-
+            string path = @"Templates\reg.html";
+            using (StreamReader sr = new StreamReader(path))
+            {
+                email.Body = sr.ReadToEnd();
+            }
+            email.Body = email.Body.Replace("{fullname}", context.Entity.FCs);
             if (context.Entity.IsVerified)
             {
                 email.Body = "Поздравляем! Ваша заявка была одобрена!";

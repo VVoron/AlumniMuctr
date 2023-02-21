@@ -1,4 +1,30 @@
-﻿const imgChecked = document.querySelector('.icon_show');
+﻿let btns = document.querySelectorAll("*[data-modal-btn]");
+
+for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+        let name = btns[i].getAttribute('data-modal-btn');
+        let modal = document.querySelector("[data-modal-window='" + name + "']");
+        modal.style.display = "block";
+        document.getElementById("temp").classList.add("body-stop-scroll");
+        let close = modal.querySelector(".close_modal_window");
+        close.addEventListener('click', function () {
+            modal.style.display = "none";
+            document.getElementById("temp").classList.remove("body-stop-scroll");
+        });
+    });
+}
+
+window.onclick = function (event) {
+    if (event.target.hasAttribute('data-modal-window')) {
+        let modals = document.querySelectorAll('*[data-modal-window]');
+        for (let i = 0; i < modals.length; i++) {
+            modals[i].style.display = "none";
+            document.getElementById("temp").classList.remove("body-stop-scroll");
+        }
+    }
+}
+
+const imgChecked = document.querySelector('.icon_show');
 const imgNotChecked = document.querySelector('.icon_close');
 
 var category = 0; //0 - all, 1 - events, 2 - jobs, 3 - anouncments
@@ -17,7 +43,7 @@ function filterFunSaturdayTable() {
     }
 }
 
-function openRegForm() {
+/*function openRegForm() {
     document.getElementById("funreg").classList.remove("hidden");
     document.getElementById("overlay").classList.add("active");
     document.getElementById("temp").classList.add("body-stop-scroll");
@@ -29,7 +55,7 @@ function closeRegForm() {
     document.getElementById("overlay").classList.remove("active");
     document.getElementById("temp").classList.remove("body-stop-scroll");
     document.getElementById("back").removeEventListener("click", closeRegForm);
-}
+}*/
 
 function filterRegs(filter) {
     document.querySelector(".filter.active").classList.remove("active");
@@ -131,12 +157,14 @@ function getYears(id) {
     }
 }
 
-function showNews(element) {
+/*function showNews(element) {
     var newsBlock = element.nextElementSibling;
+    var bg = document.getElementById("dark-background")
     var body = document.getElementById("temp");
     var overlay = document.getElementById("overlay");
     newsBlock.classList.add("active");
     newsBlock.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
+    bg.classList.add("backgr");
     body.classList.add("body-stop-scroll");
     overlay.classList.add("active");
 }
@@ -148,7 +176,7 @@ function closeNews(element) {
     newsBlock.classList.remove("active");
     body.classList.remove("body-stop-scroll");
     overlay.classList.remove("active");
-}
+}*/
 
 function showProgramm(element) {
     var programmBlock = element.nextElementSibling;
@@ -209,7 +237,7 @@ window.onload = function () {
         $button.style.backgroundColor = isVisible ? "#27a0f0" : "#fff";
     });
 
-    document.getElementById("reg-btn").onclick = function () {
+   /* document.getElementById("reg-btn").onclick = function () {
         var el = document.querySelectorAll(".reg-form")[0];
         var body = document.getElementById("temp");
         el.classList.remove("reg-close-animation");
@@ -223,7 +251,59 @@ window.onload = function () {
         el.classList.add("reg-close-animation");
         body.classList.remove("body-stop-scroll");
         setTimeout(() => { el.classList.remove("display-flex"); }, 1300);
-    });
+
+display: flex !important;
+    position: fixed !important;
+    z-index: 100;
+    overflow-y: scroll;
+    background-color: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    animation: regStart 1.3s ease;
+
+
+
+
+    });*/
+
+
+
+
+
+
+
+
+    /*$(document).ready(function ($) {
+        $('.popup-open-reg').click(function () {
+            $('.popup-fade').fadeIn();
+            document.getElementById("temp").classList.add("body-stop-scroll");
+            return false;
+        });
+
+        $('.reg-close').click(function () {
+            $(this).parents('.popup-fade').fadeOut();
+            document.getElementById("temp").classList.remove("body-stop-scroll");
+            return false;
+        });
+
+        $(document).keydown(function (e) {
+            if (e.keyCode === 27) {
+                e.stopPropagation();
+                $('.popup-fade').fadeOut
+            }
+        });
+
+        $('.popup-fade').click(function (e) {
+            if ($(e.target).closest('.reg-container').length == 0) {
+                $(this).fadeOut();
+                document.getElementById("temp").classList.remove("body-stop-scroll");
+            }
+        });
+
+
+
+    });*/
 
     document.getElementById('more').onclick = function () {
         var showPerClick = 3;
@@ -254,3 +334,68 @@ window.onload = function () {
         }
     };
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modalController = ({ modal, btnOpen, btnClose, time = 300 }) => {
+        const buttonElems = document.querySelectorAll(btnOpen);
+        const modalElem = document.querySelector(modal);
+
+        modalElem.style.cssText = `
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity ${time}ms ease-in-out;
+  `;
+
+        const closeModal = event => {
+            const target = event.target;
+
+            if (
+                target === modalElem ||
+                (btnClose && target.closest(btnClose)) ||
+                event.code === 'Escape'
+            ) {
+
+                modalElem.style.opacity = 0;
+                document.getElementById("temp").classList.remove("body-stop-scroll");
+                setTimeout(() => {
+                    modalElem.style.visibility = 'hidden';
+                }, time);
+
+                window.removeEventListener('keydown', closeModal);
+            }
+        }
+
+        const openModal = () => {
+            document.getElementById("temp").classList.add("body-stop-scroll");
+            modalElem.style.visibility = 'visible';
+            modalElem.style.opacity = 1;
+            window.addEventListener('keydown', closeModal)
+        };
+
+        buttonElems.forEach(btn => {
+            btn.addEventListener('click', openModal);
+        });
+
+        modalElem.addEventListener('click', closeModal);
+    };
+
+    modalController({
+        modal: '.modal_reg',
+        btnOpen: '.section__button_reg',
+        btnClose: '.modal__close',
+    });
+
+    modalController({
+        modal: '.modal_reg_anons',
+        btnOpen: '.modal_reg_anons_open',
+        btnClose: '.modal_reg__close'
+    });
+}, false);
+
+
+
+
