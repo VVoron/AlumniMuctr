@@ -32,7 +32,11 @@ namespace AlumniMuctr.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Registration(RegistrationFormRequest obj)
-        {    
+        {
+            if (_db.RegistrationForm.Where(x => x.FCs == obj.FCs) != null) {
+                obj.FCs += " (дубликат)";
+            }
+
             _db.RegistrationForm.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");

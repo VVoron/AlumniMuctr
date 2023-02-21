@@ -656,12 +656,16 @@ nav a:hover {
     margin-bottom: 0;
 }
 
+.blocks li.in-block p{
+    text-align:justify;
+}
+
 .programms img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     position: absolute;
-    left: -200px;
+    left: -150px;
     border: 3px solid #3973e9;
     top: -3px;
     z-index: 1;
