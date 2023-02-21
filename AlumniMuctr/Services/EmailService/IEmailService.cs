@@ -4,6 +4,6 @@ namespace AlumniMuctr.Services.EmailService
 {
     public interface IEmailService
     {
-        public void SendEmail(Email request);
+        public Task SendEmail(Email request);
     }
 }

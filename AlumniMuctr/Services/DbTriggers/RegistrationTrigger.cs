@@ -1,7 +1,6 @@
 ﻿using AlumniMuctr.Models;
 using AlumniMuctr.Services.EmailService;
 using EntityFrameworkCore.Triggered;
-using System.IO;
 
 namespace AlumniMuctr.Services.DbTriggers
 {
@@ -14,7 +13,7 @@ namespace AlumniMuctr.Services.DbTriggers
             _email = email;
         }
 
-        public Task AfterSave(ITriggerContext<RegistrationForm> context, CancellationToken cancellationToken)
+        public async Task AfterSave(ITriggerContext<RegistrationForm> context, CancellationToken cancellationToken)
         {
             var email = new Email();
             email.To = context.Entity.Email;
@@ -28,10 +27,13 @@ namespace AlumniMuctr.Services.DbTriggers
             {
                 email.Body = "Личные данные были успешно изменены.";
             }
+            else
+            {
+                return;
+            }
 
-            _email.SendEmail(email);
 
-            return Task.CompletedTask;
+            await _email.SendEmail(email);
         }
     }
 }

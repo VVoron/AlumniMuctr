@@ -27,7 +27,7 @@ namespace AlumniMuctr.Services.EmailService
 
         }
 
-        public void SendEmail(Email request)
+        public async Task SendEmail(Email request)
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_user));
@@ -36,10 +36,10 @@ namespace AlumniMuctr.Services.EmailService
             email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
 
             using var smtp = new SmtpClient();
-            smtp.Connect(_host, _port, SecureSocketOptions.StartTls);
-            smtp.Authenticate(_user, _password);
-            smtp.Send(email);
-            smtp.Disconnect(true);
+            await smtp.ConnectAsync(_host, _port, SecureSocketOptions.StartTls);
+            await smtp.AuthenticateAsync(_user, _password);
+            await smtp.SendAsync(email);
+            await smtp.DisconnectAsync(true);
         }
     }
 }
