@@ -1,6 +1,7 @@
 ﻿@model FunSatPage
 @{
     int i = 0;
+    bool isFirstLecture = true;
 }
 
 <partial name="_Notifications" />
@@ -178,7 +179,7 @@
 
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                @*<div class="carousel-item active">
                     <iframe src="https://www.youtube.com/embed/4q9YVjwgjPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="carousel-item">
@@ -187,7 +188,7 @@
                 <div class="carousel-item">
                     <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-                <div class="carousel-item">
+                @*<div class="carousel-item">
                     <iframe src="https://www.youtube.com/embed/kL_tjx7peTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="carousel-item">
@@ -195,7 +196,24 @@
                 </div>
                 <div class="carousel-item">
                     <iframe src="https://www.youtube.com/embed/MuRwDHKGx7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
+                </div>*@
+
+                @foreach (var lecture in Model.Lectures)
+                {
+                    @if(isFirstLecture){
+                        <div class="carousel-item active">
+                            @Html.Raw(lecture.Url)
+                        </div>
+                        isFirstLecture = false;
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            @Html.Raw(lecture.Url)
+                        </div>
+                    }
+                }
+                
             </div>
             <button class="carousel-control-prev h-25" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

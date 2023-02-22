@@ -22,6 +22,7 @@ namespace AlumniMuctr.Controllers
             thisModel.News = news;
             thisModel.Helper = new Helper();
             thisModel.FunSaturdayReg = new FunSaturdayReg();
+            thisModel.Lectures = _db.Lectures.ToList();
 
             return View(thisModel);
         }

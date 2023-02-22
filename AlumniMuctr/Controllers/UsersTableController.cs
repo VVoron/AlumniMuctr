@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AlumniMuctr.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UsersTableController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -18,7 +19,6 @@ namespace AlumniMuctr.Controllers
             _hash = hash;
         }
 
-        [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
             IEnumerable<Models.User> Users = _db.User.ToList();
@@ -57,7 +57,6 @@ namespace AlumniMuctr.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "admin")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -95,8 +94,6 @@ namespace AlumniMuctr.Controllers
             return RedirectToAction("Index");
         }
 
-
-        [Authorize(Roles = "admin")]
         public IActionResult Delete(int? id)
         {
             var obj = _db.User.Find(id);
