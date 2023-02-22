@@ -995,7 +995,7 @@ table th {
     border-radius: 7px;
     background: #fff;
     position: fixed;
-    z-index: 1;
+    z-index: 9998;
     cursor: default;
     max-width: 360px;
     overflow: auto;
