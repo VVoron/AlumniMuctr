@@ -176,16 +176,15 @@ function getYears(id) {
     }
 }
 
-/*function showNews(element) {
+function showNews(element) {
     var newsBlock = element.nextElementSibling;
-    var bg = document.getElementById("dark-background")
     var body = document.getElementById("temp");
     var overlay = document.getElementById("overlay");
-    newsBlock.classList.add("active");
-    newsBlock.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
-    bg.classList.add("backgr");
+
     body.classList.add("body-stop-scroll");
     overlay.classList.add("active");
+    newsBlock.classList.add("active");
+    newsBlock.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
 }
 
 function closeNews(element) {
@@ -195,7 +194,7 @@ function closeNews(element) {
     newsBlock.classList.remove("active");
     body.classList.remove("body-stop-scroll");
     overlay.classList.remove("active");
-}*/
+}
 
 function showProgramm(element) {
     var programmBlock = element.nextElementSibling;
@@ -416,5 +415,10 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 
-
-
+$(window).on('resize', function () {
+    var width = window.innerWidth;
+    var arr = document.querySelectorAll(".fun-sut-page iframe");
+    arr.forEach(item => {
+        item.style.height = (width / 3.5).toString() + "px";
+    });
+}).resize();
