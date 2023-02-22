@@ -1839,3 +1839,12 @@ label.error {
     }
 }
 
+.required-field {
+    font-size: 12px;
+    color: #A6A9B6;
+}
+
+.required-field-block{
+    margin-top:-13px;
+}
+

@@ -86,22 +86,28 @@
 
             <div class="user-details">
                 <div class="input-box">
-                    <span asp-validation-for="Human.FCs" class="details">Фамилия Имя Отчество (*Обязательно)</span>
+                    <span asp-validation-for="Human.FCs" class="details">Фамилия Имя Отчество</span>
+                    <div class="required-field-block">
+                        <span class="required-field"> (*Обязательно) </span>
+                    </div>
                     <input asp-for="Human.FCs" name="Fcs" placeholder="Иванов Иван Иванович" required>
                 </div>
             </div>
             <div class="user-details">
 
                 <div class="input-box">
-                    <span asp-validation-for="Human.FCsгUniversity" class="details">Фамилия в период обучения (*Обязательно)</span>
-                    <input asp-for="Human.FCsгUniversity" name="FCsгUniversity" type="text" placeholder="Иванов Иван Иванович" required>
+                    <span asp-validation-for="Human.FCsгUniversity" class="details">Фамилия в период обучения</span>
+                    <div class="required-field-block">
+                        <span class="required-field"> (*Обязательно) </span>
+                    </div>
+                    <input asp-for="Human.FCsгUniversity" name="FCsгUniversity" type="text" placeholder="Иванов" required>
                 </div>
             </div>
 
             <div class="user-details">
                 <div class="input-box">
                     <span asp-validation-for="Human.Birthday" class="details">Дата рождения</span>
-                    <input asp-for="Human.Birthday" name="Birthday" type="date" id="birthday-date">
+                    <input asp-for="Human.Birthday" name="Birthday" style="max-width: 150px" type="date" id="birthday-date">
                 </div>
 
                 <div class="input-box">
@@ -110,7 +116,11 @@
                 </div>
 
                 <div class="input-box">
-                    <span asp-validation-for="Human.EndUniversityTime" class="details">Год окончания университета (*Обязательно)</span>
+                    <span asp-validation-for="Human.EndUniversityTime" class="details">Год окончания университета</span>
+                    <div class="required-field-block">
+                        <span class="required-field"> (*Обязательно) </span>
+                    </div>
+                    @*<br />*@
                     <input asp-for="Human.EndUniversityTime" name="EndUniversityTime" type="number" min="1920" max="@DateTime.Now.Year" style="max-width: 150px" SIZE required />
                 </div>
 
@@ -150,7 +160,10 @@
                 </div>
 
                 <div class="input-box">
-                    <span asp-validation-for="Human.Email" class="details">Адресс электронной почты (*Обязательно)</span>
+                    <span asp-validation-for="Human.Email" class="details">Адресс электронной почты</span>
+                    <div class="required-field-block">
+                        <span class="required-field"> (*Обязательно) </span>
+                    </div>
                     <input asp-for="Human.Email" name="Email" type="email" placeholder="example@muctr.ru" required>
                 </div>
 
@@ -350,7 +363,7 @@
                     for (int k = 0; k < Images.Length; k++)
                     {
                         imagesList.Add(String.Format(@"{0}/{1}", "/media/colladje", Images[k].Name));
-                                    @Html.Raw("<img src='" + imagesList[k] + "' class='scale' />")
+                                        @Html.Raw("<img src='" + imagesList[k] + "' class='scale' />")
                         //Console.WriteLine(String.Format(@"{0}/{1}", "/media/colladje", Images[k].Name));
                     }
                 }

@@ -18,7 +18,7 @@ namespace AlumniMuctr.Services.EmailNewsletters
         public async Task SendBirthdayEmails()
         {
             var birthdayPeople = _dbContext.RegistrationForm
-                .Where(x=>x.Subscription && x.IsVerified && x.Birthday == DateTime.Today)
+                .Where(x=>x.Subscription && x.IsVerified && x.Birthday == DateTime.Today && !x.FCs.Contains("(дубликат)"))
                 .ToList();
 
             foreach (var p in birthdayPeople)
