@@ -92,10 +92,6 @@ header {
     font-size: 14px;
 }
 
-.reg-form {
-    display: none;
-}
-
 .reg-container {
     position: fixed;
     max-width: 850px;
