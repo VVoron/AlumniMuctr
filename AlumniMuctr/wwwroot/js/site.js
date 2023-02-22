@@ -117,17 +117,17 @@ function reveal() {
     }
 };
 
-function navigationscroll() {
-    var nav = document.getElementById("main-nav");
-    var footer = document.getElementById("info");
-    var windowHeight = window.innerHeight;
-    var elementTop = footer.getBoundingClientRect().top;
-    if (elementTop < windowHeight) {
-        nav.classList.add('hidden');
-    } else {
-        nav.classList.remove('hidden');
-    }
-}
+//function navigationscroll() {
+//    var nav = document.getElementById("main-nav");
+//    var footer = document.getElementById("info");
+//    var windowHeight = window.innerHeight;
+//    var elementTop = footer.getBoundingClientRect().top;
+//    if (elementTop < windowHeight) {
+//        nav.classList.add('hidden');
+//    } else {
+//        nav.classList.remove('hidden');
+//    }
+//}
 
 function changeActive(element) {
     var ids = ["all", "events", "jobs", "announcements"]
@@ -217,7 +217,7 @@ function closeProgramm(element) {
 }
 
 window.addEventListener("scroll", reveal);
-window.addEventListener("scroll", navigationscroll);
+//window.addEventListener("scroll", navigationscroll);
 
 window.onload = function () {
     $(document).ready(function () {
