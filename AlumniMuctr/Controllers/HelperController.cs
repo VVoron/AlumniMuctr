@@ -24,7 +24,7 @@ namespace AlumniMuctr.Controllers
         public ActionResult ExportData()
         {
             ExcelWork excel = new ExcelWork();
-            return excel.ExportData("Supp", _db);
+            return excel.ExportData("Lectures", _db);
         }
 
         public IActionResult WatchMore(int? id)

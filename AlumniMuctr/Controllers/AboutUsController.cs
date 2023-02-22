@@ -21,6 +21,9 @@ namespace AlumniMuctr.Controllers
         [HttpPost]
         public async Task<IActionResult> HelperRequest(Helper obj)
         {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index");
+
             Support support = new Support();
             support.AddedNewQuestion(obj, _db);
             return RedirectToAction("Index");

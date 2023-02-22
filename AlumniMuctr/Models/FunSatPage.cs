@@ -5,5 +5,6 @@
         public IEnumerable<News> News { get; set;}
         public Helper? Helper { get; set; }
         public FunSaturdayReg FunSaturdayReg { get; set; }
+        public IEnumerable<Lecture> Lectures { get; set; }
     }
 }

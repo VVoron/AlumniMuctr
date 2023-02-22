@@ -224,7 +224,7 @@ form .gender-details .category {
 }
 
 .user-details .input-box textarea {
-    height: 45px;
+    /*height: 45px;*/
     width: 100%;
     outline: none;
     border-radius: 5px;

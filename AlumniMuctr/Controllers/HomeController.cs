@@ -33,6 +33,9 @@ namespace AlumniMuctr.Controllers
         [HttpPost]
         public async Task<IActionResult> Registration(RegistrationFormRequest obj)
         {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index");
+
             if (_db.RegistrationForm.Where(x => x.FCs == obj.FCs) != null || _db.RegistrationForm.Where(x => x.FCsгUniversity == obj.FCsгUniversity) != null) {
                 obj.FCs += " (дубликат)";
             }
@@ -45,6 +48,9 @@ namespace AlumniMuctr.Controllers
         [HttpPost]
         public async Task<IActionResult> HelperRequest(Helper obj)
         {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index");
+
             Support support = new Support();
             support.AddedNewQuestion(obj, _db);
             return RedirectToAction("Index");

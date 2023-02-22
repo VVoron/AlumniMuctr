@@ -22,6 +22,7 @@ namespace AlumniMuctr.Controllers
             thisModel.News = news;
             thisModel.Helper = new Helper();
             thisModel.FunSaturdayReg = new FunSaturdayReg();
+            thisModel.Lectures = _db.Lectures.ToList();
 
             return View(thisModel);
         }
@@ -29,6 +30,9 @@ namespace AlumniMuctr.Controllers
         [HttpPost]
         public async Task<IActionResult> HelperRequest(Helper obj)
         {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index");
+
             Support support = new Support();
             support.AddedNewQuestion(obj, _db);
             return RedirectToAction("Index");
