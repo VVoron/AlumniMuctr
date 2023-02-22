@@ -9,6 +9,7 @@
         public string BriefDescription { get; set; }
         public string Description { get; set; }
         public DateTime Created { get; set; }
+        public DateTime? StartTime { get; set; }
         public int CategoryId { get; set; }
 
         public NewsRequest()
@@ -24,6 +25,7 @@
             Description = news.Description;
             Created = news.Created;
             PhotoUrl = news.Photo;
+            StartTime = news.StartTime;
             CategoryId = news.CategoryId;
         }
     }

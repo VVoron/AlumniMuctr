@@ -26,6 +26,7 @@ namespace AlumniMuctr.Models
             Title = request.Title;
             BriefDescription = request.BriefDescription;
             Description = request.Description;
+            StartTime = request.StartTime;
             CategoryId = request.CategoryId;
         }
 

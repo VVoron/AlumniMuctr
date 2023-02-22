@@ -57,19 +57,14 @@ function filterFunSaturdayTable() {
     }
 }
 
-/*function openRegForm() {
-    document.getElementById("funreg").classList.remove("hidden");
-    document.getElementById("overlay").classList.add("active");
-    document.getElementById("temp").classList.add("body-stop-scroll");
-    setTimeout(() => { document.getElementById("back").addEventListener("click", closeRegForm); }, 200);
+function checkForAction() {
+    var select = document.getElementById("category");
+    var value = select.value;
+    if (value == 3)
+        document.getElementById("for-action").classList.remove("hidden");
+    else if (!document.getElementById("for-action").classList.contains("hidden"))
+        document.getElementById("for-action").classList.add("hidden");
 }
-
-function closeRegForm() {
-    document.getElementById("funreg").classList.add("hidden");
-    document.getElementById("overlay").classList.remove("active");
-    document.getElementById("temp").classList.remove("body-stop-scroll");
-    document.getElementById("back").removeEventListener("click", closeRegForm);
-}*/
 
 function filterRegs(filter) {
     document.querySelector(".filter.active").classList.remove("active");

@@ -52,11 +52,11 @@
 
         <div class="input-box">
             <span asp-validation-for="News.CategoryId" class="details">Категория</span>
-            <select asp-for="News.CategoryId" id="CategoryId" name="CategoryId" class="family-select">
+            <select asp-for="News.CategoryId" id="category" name="CategoryId" class="family-select" onchange="checkForAction()">
                 @{
                     foreach(var cat in Model.Categories){
                         if (cat.Id == Model.News.CategoryId){
-                            <option selected=@cat.Id>@cat.Name</option>
+                            <option value="@cat.Id" selected=@cat.Id>@cat.Name</option>
                         }
                         else
                         {
@@ -65,6 +65,18 @@
                     }
                 }
             </select>
+        </div>
+
+        @if (Model.News.CategoryId == 3)
+        {
+            @Html.Raw("<div id='for-action' class='input-box'>")
+        }
+        else
+        {
+            @Html.Raw("<div id='for-action' class='input-box hidden'>")
+        }
+            <span asp-validation-for="News.StartTime" class="details">Дата события</span>
+            <input asp-for="News.StartTime" name="StartTime" style="max-width: 150px" type="date">
         </div>
 
         <div class="file-button">

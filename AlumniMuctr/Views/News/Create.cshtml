@@ -52,13 +52,18 @@
 
         <div class="input-box">
             <span asp-validation-for="CategoryId" class="details">Категория</span>
-            <select asp-for="CategoryId" name="CategoryId" class="family-select">
+            <select asp-for="CategoryId" name="CategoryId" class="family-select" onchange="checkForAction()" id="category">
                 <option value="5">Нет</option>
                 <option value="1">Мероприятия</option>
                 <option value="2">Вакансии</option>
                 <option value="3">Анонсы</option>
                 <option value="4">Знаменитые менделеевцы</option>
             </select>
+        </div>
+
+        <div id="for-action" class="input-box hidden">
+            <span asp-validation-for="StartTime" class="details">Дата события</span>
+            <input asp-for="StartTime" name="StartTime" style="max-width: 150px" type="date">
         </div>
 
         <div class="file-button">

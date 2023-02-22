@@ -42,23 +42,23 @@ namespace AlumniMuctr.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(NewsEdit request)
+        public async Task<IActionResult> Create(NewsRequest request)
         {
             if (!ModelState.IsValid)
                 return View(request);
 
 
-            var entity = new News(request.News);
+            var entity = new News(request);
 
             entity.Photo = String.Empty;
             
-            if (request.News.Photo != null)
+            if (request.Photo != null)
             {
-                entity.Photo = await _saveFile.SaveFile(_appEnvironment.WebRootPath, "/media/NewsMedia/", request.News.Photo);
+                entity.Photo = await _saveFile.SaveFile(_appEnvironment.WebRootPath, "/media/NewsMedia/", request.Photo);
             } 
-            else if (request.News.PhotoUrl != null)
+            else if (request.PhotoUrl != null)
             {
-                entity.Photo = request.News.PhotoUrl;
+                entity.Photo = request.PhotoUrl;
             }
 
             _db.News.Add(entity);
@@ -100,6 +100,10 @@ namespace AlumniMuctr.Controllers
             entity.BriefDescription = request.BriefDescription;
             entity.Description = request.Description;
             entity.CategoryId = request.CategoryId;
+            if (request.CategoryId == 3)
+                entity.StartTime = request.StartTime;
+            else
+                entity.StartTime = null;
 
             if (request.Photo != null)
             {
