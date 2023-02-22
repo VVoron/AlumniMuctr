@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\media\UserPictures\" />
-    <Folder Include="EmailTemplates\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -33,7 +33,7 @@ namespace AlumniMuctr.Services.DbTriggers
             }
 
 
-            await _email.SendEmail(email);
+            await _email.SendEmailAsync(email);
         }
     }
 }

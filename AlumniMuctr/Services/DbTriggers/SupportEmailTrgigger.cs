@@ -24,7 +24,7 @@ namespace AlumniMuctr.Services.DbTriggers
                 Body = context.Entity.Info
             };
 
-            _email.SendEmail(email);
+            _email.SendEmailAsync(email);
 
             return Task.CompletedTask;
         }
