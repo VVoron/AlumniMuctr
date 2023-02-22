@@ -220,7 +220,7 @@ form .gender-details .category {
 
 .reg-form form .submit-button input:hover {
     cursor: pointer;
-    background: #096cf7cc;
+    background: #0B5FDC;
 }
 
 .user-details .input-box textarea {
@@ -290,7 +290,9 @@ form .gender-details .category {
     background-color: #096cf7cc;
     margin-bottom: 10px;
 }
-
+.file-button label:hover {
+    background-color: #0B5FDC;
+}
 
 /*.display-flex {
     display: flex !important;
@@ -1057,6 +1059,7 @@ label.error {
         display: table;
         visibility: visible;
         z-index: 100000000;
+        top: 0;
     }
 
     .top_btn_support {
@@ -1832,6 +1835,13 @@ label.error {
 
     .news-module {
         max-width: 95%;
+    }
+
+    .fun-reg-btn {
+        padding: 10px !important;
+        width: 200px !important;
+        font-size: 20px;
+        height: auto !important;
     }
 }
 
