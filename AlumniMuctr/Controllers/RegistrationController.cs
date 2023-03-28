@@ -69,6 +69,9 @@ namespace AlumniMuctr.Controllers
                 TempData["success"] = "Заявка успешно создана";
                 return RedirectToAction("Index");
             }
+
+
+            TempData["error"] = "Вы неправильно ввели данные!";
             return View(obj);
         }
 

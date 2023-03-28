@@ -22,12 +22,6 @@ namespace AlumniMuctr.Controllers
             return View(helpers);
         }
 
-        public ActionResult ExportData()
-        {
-            ExcelWork excel = new ExcelWork();
-            return excel.ExportData("Supp", _db);
-        }
-
         public IActionResult Create()
         {
             var entity = new Lecture();

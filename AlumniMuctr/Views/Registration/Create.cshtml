@@ -51,14 +51,7 @@
 
         <div class="input-box">
             <span asp-validation-for="EndUniversityTime" class="details">Год окончания университета</span>
-            <select asp-for="EndUniversityTime" class="family-select" name="EndUniversityTime" id="ending-year" required>
-                @{
-                    for (int year = DateTime.Now.Year; year >= 1920; year--)
-                    {
-                        <option value=@year>@year</option>
-                    }
-                }
-            </select>
+            <input asp-for="EndUniversityTime" name="EndUniversityTime" type="number" min="1920" max="@DateTime.Now.Year" style="max-width: 150px" required />
         </div>
 
         <div class="input-box">
@@ -124,7 +117,7 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" style="width:200px">Обновить</button>
+    <button type="submit" class="btn btn-primary" style="width:200px">Создать</button>
     <a asp-controller="Registration" asp-action="Index" class="btn btn-secondary" style="width:200px">Вернуться</a>
 </form>
 

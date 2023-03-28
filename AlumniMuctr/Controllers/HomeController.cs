@@ -34,7 +34,10 @@ namespace AlumniMuctr.Controllers
         public async Task<IActionResult> Registration(RegistrationFormRequest obj)
         {
             if (!ModelState.IsValid)
+            {
+                TempData["error"] = "Вы неправильно ввели данные!";
                 return RedirectToAction("Index");
+            }
 
             if (_db.RegistrationForm.Where(x => x.FCs == obj.FCs) != null || _db.RegistrationForm.Where(x => x.FCsгUniversity == obj.FCsгUniversity) != null) {
                 obj.FCs += " (дубликат)";

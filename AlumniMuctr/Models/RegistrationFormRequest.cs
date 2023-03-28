@@ -1,13 +1,12 @@
 ﻿using AlumniMuctr.CustomValidation;
-using Org.BouncyCastle.Asn1.Ocsp;
-using System.Globalization;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlumniMuctr.Models
 {
     public class RegistrationFormRequest
     {
         public Guid Id { get; set; }
-        [FullName (ErrorMessage = "Введите фамилию, имя и отчество (при наличии)")]
+        [FullName(ErrorMessage = "Введите фамилию, имя и отчество (при наличии)")]
         public string FCs { get; set; }
         public string FCsгUniversity { get; set; }
         public DateTime? Birthday { get; set; }
