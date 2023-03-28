@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+    website:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        ports:
+          - "8080:80"
+        depends_on:
+          - db
