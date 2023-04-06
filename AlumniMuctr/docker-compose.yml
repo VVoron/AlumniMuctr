@@ -6,7 +6,7 @@ services:
           context: .
           dockerfile: Dockerfile
         ports:
-                - "8080:8080"
+          - "8080:8080"
 
     sql1:
         image: "mcr.microsoft.com/mssql/server:2022-latest"
