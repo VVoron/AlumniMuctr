@@ -27,13 +27,13 @@ namespace AlumniMuctr.Services.EmailNewsletters
 
                 var email = new Email();
                 email.To = p.Email;
-                email.Subject = "С Днем рождения!";
+                email.Subject = "Поздравляем с Днем рождения!";
                 email.Body = File.ReadAllText(@"../AlumniMuctr/EmailTemplates/BirthdayTemplate.html")
                     .Replace("{name}", fullName[^2]).Replace("{sname}", fullName[^1]);
 
                 await _email.SendEmailAsync(email);
 
-                await Task.Delay(300000);
+                await Task.Delay(60000);
             }
 
         }

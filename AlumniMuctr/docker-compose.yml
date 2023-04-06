@@ -7,4 +7,20 @@ services:
           dockerfile: Dockerfile
         ports:
           - "8080:80"
+    
+    sql1:
+        image: "mcr.microsoft.com/mssql/server:2022-latest"
+        ports:
+          - "1433:1433"
+
+        environment:
+            SA_PASSWORD: "AlumniDb2023"
+            ACCEPT_EULA: "Y"
+
+    proxy:
+        image: nginx:mainline
+        volumes: 
+          - ./nginx.conf:/etc/nginx/nginx.conf
+        ports:
+          - "80:80"
 

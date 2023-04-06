@@ -28,6 +28,7 @@ builder.Services.AddScoped<ISaveFileService, SaveFileService>();
 builder.Services.AddScoped<IBirthdayNewsletter, BirthdayNewsletter>();
 builder.Services.AddSingleton<IHostedService, DailyCheck>();
 
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
