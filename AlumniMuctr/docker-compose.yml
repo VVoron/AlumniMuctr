@@ -17,10 +17,4 @@ services:
             SA_PASSWORD: "AlumniDb2023"
             ACCEPT_EULA: "Y"
 
-    proxy:
-        image: nginx:mainline
-        volumes: 
-          - ./nginx.conf:/etc/nginx/nginx.conf
-        ports:
-          - "80:80"
 
