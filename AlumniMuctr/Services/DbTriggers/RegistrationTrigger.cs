@@ -23,6 +23,7 @@ namespace AlumniMuctr.Services.DbTriggers
 
             if (context.ChangeType == ChangeType.Added)
             {
+                Console.WriteLine(Directory.GetCurrentDirectory() + @"/EmailTemplates/WelcomeTemplate.html");
                 email.Body = File.ReadAllText(Directory.GetCurrentDirectory() + @"/EmailTemplates/WelcomeTemplate.html").Replace("{fullname}", context.Entity.FCs);
             }
             else if (context.ChangeType == ChangeType.Modified)
@@ -34,14 +35,9 @@ namespace AlumniMuctr.Services.DbTriggers
                 return;
             }
 
-            try
-            {
-                await _email.SendEmailAsync(email);
 
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            await _email.SendEmailAsync(email);
+
         }
     }
 }
