@@ -7,10 +7,12 @@ namespace AlumniMuctr.Services.DbTriggers
     public class RegistrationTrigger : IAfterSaveTrigger<RegistrationForm>
     {
         private readonly IEmailService _email;
+        private readonly IWebHostEnvironment _environment;
 
-        public RegistrationTrigger(IEmailService email)
+        public RegistrationTrigger(IEmailService email, IWebHostEnvironment environment)
         {
             _email = email;
+            _environment = environment;
         }
 
         public async Task AfterSave(ITriggerContext<RegistrationForm> context, CancellationToken cancellationToken)
@@ -21,7 +23,7 @@ namespace AlumniMuctr.Services.DbTriggers
 
             if (context.ChangeType == ChangeType.Added)
             {
-                email.Body = File.ReadAllText(@"../AlumniMuctr/EmailTemplates/WelcomeTemplate.html").Replace("{fullname}", context.Entity.FCs);
+                email.Body = File.ReadAllText(_environment.ContentRootPath + @"/EmailTemplates/WelcomeTemplate.html").Replace("{fullname}", context.Entity.FCs);
             }
             else if (context.ChangeType == ChangeType.Modified)
             {
