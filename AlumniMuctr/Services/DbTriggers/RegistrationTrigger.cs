@@ -34,7 +34,14 @@ namespace AlumniMuctr.Services.DbTriggers
                 return;
             }
 
-            await _email.SendEmailAsync(email);
+            try
+            {
+                await _email.SendEmailAsync(email);
+
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
