@@ -8,11 +8,13 @@ namespace AlumniMuctr.Services.EmailNewsletters
     {
         private readonly IEmailService _email;
         private readonly ApplicationDbContext _dbContext;
+        private readonly IWebHostEnvironment _environment;
 
-        public BirthdayNewsletter(IEmailService email, ApplicationDbContext dbContext)
+        public BirthdayNewsletter(IEmailService email, ApplicationDbContext dbContext, IWebHostEnvironment environment)
         {
             _email = email;
             _dbContext = dbContext;
+            _environment = environment;
         }
 
         public async Task SendBirthdayEmails()
@@ -28,7 +30,7 @@ namespace AlumniMuctr.Services.EmailNewsletters
                 var email = new Email();
                 email.To = p.Email;
                 email.Subject = "Поздравляем с Днем рождения!";
-                email.Body = File.ReadAllText(@"../AlumniMuctr/EmailTemplates/BirthdayTemplate.html")
+                email.Body = File.ReadAllText(_environment.ContentRootPath + @"/EmailTemplates/BirthdayTemplate.html")
                     .Replace("{name}", fullName[^2]).Replace("{sname}", fullName[^1]);
 
                 await _email.SendEmailAsync(email);
