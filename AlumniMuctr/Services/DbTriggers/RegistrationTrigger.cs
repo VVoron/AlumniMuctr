@@ -24,7 +24,7 @@ namespace AlumniMuctr.Services.DbTriggers
             if (context.ChangeType == ChangeType.Added)
             {
                 Console.WriteLine(Directory.GetCurrentDirectory() + @"/EmailTemplates/WelcomeTemplate.html");
-                email.Body = File.ReadAllText(Directory.GetCurrentDirectory() + @"/EmailTemplates/WelcomeTemplate.html").Replace("{fullname}", context.Entity.FCs);
+		email.Body = File.ReadAllText(Directory.GetCurrentDirectory() + @"/EmailTemplates/WelcomeTemplate.html").Replace("{fullname}", context.Entity.FCs);
             }
             else if (context.ChangeType == ChangeType.Modified)
             {
