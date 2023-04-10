@@ -43,6 +43,8 @@
     <None Include="Views\FullRegistration\Index.cshtml" />
     <None Include="Views\News\Index.cshtml" />
     <None Include="Views\Programms\Index.cshtml" />
+    <None Include="wwwroot\EmailTemplates\BirthdayTemplate.html" />
+    <None Include="wwwroot\EmailTemplates\WelcomeTemplate.html" />
   </ItemGroup>
 
 </Project>
