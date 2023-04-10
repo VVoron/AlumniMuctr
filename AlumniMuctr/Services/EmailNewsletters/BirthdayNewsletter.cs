@@ -30,7 +30,7 @@ namespace AlumniMuctr.Services.EmailNewsletters
                 var email = new Email();
                 email.To = p.Email;
                 email.Subject = "Поздравляем с Днем рождения!";
-                email.Body = File.ReadAllText(_environment.ContentRootPath + @"/EmailTemplates/BirthdayTemplate.html")
+                email.Body = File.ReadAllText(_environment.WebRootPath + @"/media/EmailTemplates/BirthdayTemplate.html")
                     .Replace("{name}", fullName[^2]).Replace("{sname}", fullName[^1]);
 
                 await _email.SendEmailAsync(email);
