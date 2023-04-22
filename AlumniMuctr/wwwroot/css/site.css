@@ -773,7 +773,7 @@ footer {
     text-align: center;
     background-color: #fff;
     margin-bottom: 0;
-    padding: 2rem 0;
+    padding: 2rem 0 0 0;
 }
 
 footer h1 {
@@ -796,6 +796,16 @@ footer p {
 
 footer a {
     text-decoration: none;
+}
+
+footer .copyright {
+    text-align: center;
+}
+
+footer .copyright p {
+    margin-bottom: 0 !important;
+    padding: 25px 0 15px 0;
+    font-size: 16px;
 }
 
 .all_pict {
@@ -1553,9 +1563,41 @@ label.error {
 /* ScrollBar */
 
 /* Firefox */
-.reg-container, .news-module, .box, form-control {
+.reg-container, .news-module, .box, form-control, temp {
     scrollbar-width: thin;
     scrollbar-color: #0D6EFD #DFE9EB;
+}
+
+/* Chrome, Edge and Safari for reg-form*/
+#temp::-webkit-scrollbar {
+    width: 9px;
+    width: 9px;
+}
+
+#temp::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+}
+
+#temp::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+}
+
+#temp::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+}
+
+#temp::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #0D6EFD;
+}
+
+#temp::-webkit-scrollbar-thumb:hover {
+    background-color: #0B5FDC;
+}
+
+#temp::-webkit-scrollbar-thumb:active {
+    background-color: #0B5FDC;
 }
 
 /* Chrome, Edge and Safari for reg-form*/
