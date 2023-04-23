@@ -1570,12 +1570,12 @@ label.error {
 
 /* Chrome, Edge and Safari for reg-form*/
 #temp::-webkit-scrollbar {
-    width: 9px;
-    width: 9px;
+    width: 15px;
+    width: 15px;
 }
 
 #temp::-webkit-scrollbar-track {
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #DFE9EB;
 }
 
@@ -1588,7 +1588,7 @@ label.error {
 }
 
 #temp::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #0D6EFD;
 }
 
