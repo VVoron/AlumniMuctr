@@ -1,6 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office2010.Drawing;
-using Org.BouncyCastle.Crypto;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace AlumniMuctr.Models

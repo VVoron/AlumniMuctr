@@ -32,13 +32,13 @@
     </div>
 
     <div class="user-details">
-        <div class="input-box">
+        @*<div class="input-box">
             <span asp-validation-for="OldPassword" class="details">Старый пароль</span>
             <input asp-for="OldPassword" name="OldPassword" type="text" readonly></input>
-        </div>
+        </div>*@
         <div class="input-box">
             <span asp-validation-for="NewPassword" class="details">Новый пароль</span>
-            <input asp-for="NewPassword" name="NewPassword" placeholder="Новый пароль" type="text" required></input>
+            <input asp-for="NewPassword" name="NewPassword" placeholder="Новый пароль" type="password" required></input>
         </div>
     </div>
 
